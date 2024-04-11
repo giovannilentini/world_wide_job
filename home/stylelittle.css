@@ -47,10 +47,23 @@ body.dark{
     background: var(--sidebar-color);
     transition: var(--tran-05);
     z-index: 100;
+    overflow-y: auto;
+    scrollbar-width: none; /* Per Firefox */
+    -ms-overflow-style: none; /* Per IE11 */
 }
 
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
 .sidebar.close{
-    width: 88px;
+    width: 0px;
+}
+.sidebar.close .image,
+.sidebar.close .nav-link .icon,
+.sidebar.close .search-box .icon,
+.sidebar.close .mode .icon,
+.sidebar.close .bottom-content .icon {
+    display: none;
 }
 
 /* ~~~~~~~~~~ Reusable CSS ~~~~~~~~~~ */

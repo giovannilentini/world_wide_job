@@ -15,10 +15,10 @@
     --toggle-color: #DDD;
     --text-color: #707070;
 
-    --tran-02: all 0.2s esse;
-    --tran-03: all 0.3s esse;
-    --tran-04: all 0.4s esse;
-    --tran-05: all 0.5s esse;
+    --tran-02: all 0.2s;
+    --tran-03: all 0.3s;
+    --tran-04: all 0.4s;
+    --tran-05: all 0.5s;
 }
 
 body{
@@ -47,24 +47,12 @@ body.dark{
     background: var(--sidebar-color);
     transition: var(--tran-05);
     z-index: 100;
-    overflow-y: auto;
-    scrollbar-width: none; /* Per Firefox */
-    -ms-overflow-style: none; /* Per IE11 */
 }
 
-.sidebar::-webkit-scrollbar {
-    display: none;
-}
 .sidebar.close{
-    width: 0px;
+    width: 88px;
 }
-.sidebar.close .image,
-.sidebar.close .nav-link .icon,
-.sidebar.close .search-box .icon,
-.sidebar.close .mode .icon,
-.sidebar.close .bottom-content .icon {
-    display: none;
-}
+
 
 /* ~~~~~~~~~~ Reusable CSS ~~~~~~~~~~ */
 .sidebar .text {
@@ -135,30 +123,6 @@ header .image-text .header-text{
     margin-top: -2px;
 }
 
-.sidebar header .toggle{
-    position: absolute;
-    top: 50%;
-    right: -25px;
-    transform: translateY(-50%) rotate(180deg);
-    height: 25px;
-    width: 25px;
-    background-color: var(--primary-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    color: var(--sidebar-color);
-    font-size: 22px;
-    transition: var(--tran-03);
-}
-
-.sidebar.close header .toggle{
-    transform: translateY(-50%);
-}
-
-body.dark .sidebar header .toggle{
-    color: var(--text-color);
-}
 
 .sidebar .menu{
     margin-top: 35px;
@@ -301,4 +265,53 @@ body.dark .switch::before{
 .sidebar.close ~ .home{
     left: 88px;
     width: calc(100% - 88px);
+}
+
+@media only screen and (min-width: 501px)
+{
+    .icon-mobile{
+        display: none;
+        visibility: hidden;
+    }
+}
+/*
+----------Mobile------------
+ */
+@media only screen and (max-width: 500px) {
+    .sidebar{
+        width: 270px;
+    }
+    .sidebar.close{
+        width: 0px;
+        display: none;
+        visibility: hidden;
+    }
+    .sidebar.close .icon,
+    .sidebar.close .image-text
+    {
+        display: none;
+    }
+    .icon-mobile {
+        color: var(--primary-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 39px;
+        height: 39px;
+        border: 3px solid var(--primary-color);
+        border-radius: 50%;
+        background-color: transparent;
+        margin: 15px;
+        font-size: 32px;
+    }
+    .exitbutton{
+        color: var(--text-color);
+        transition: var(--tran-02);
+        width: 30px;
+        height: 30px;
+        margin: 15px;
+        display: flex;
+        background-color: transparent;
+        font-size: 30px;
+    }
 }

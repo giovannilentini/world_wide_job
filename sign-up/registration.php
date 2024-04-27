@@ -3,7 +3,8 @@
         header("Location: /");
     } else {
         $db_conn = pg_connect("host=localhost port=8080 dbname=WorldWideJob user=postgres password=password")
-         or die("Connesione fallita: " . pg_last_error());
+        or die("Connesione fallita: " . pg_last_error());
+        
     }
 ?>
 

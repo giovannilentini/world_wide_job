@@ -10,8 +10,26 @@
     <link rel="icon" href="images/nuovologopiccolo.png" type="image/icon type">
 
     <link rel="stylesheet" href="frontpage_style/stylelittle.css" media="screen and (max-width: 768px)">
-    <link rel="stylesheet" href="frontpage_style/style.css" media="screen and (min-width:769px">
+    <link rel="stylesheet" href="frontpage_style/style.css" media="screen and (min-width:769px)">
 
+    <script>
+        window.addEventListener('keydown', function(event) {
+            if ((event.ctrlKey || event.metaKey) && (event.key === '+' || event.key === '-' || event.key === '0')) {
+                event.preventDefault();
+            }
+        });
+    
+        window.addEventListener('wheel', function(event) {
+            if (event.ctrlKey || event.metaKey) {
+                event.preventDefault();
+            }
+        });
+
+        function resetZoom() {
+        document.body.style.zoom = '90%';
+    }
+    </script>
+    
 </head>
 <body>
 

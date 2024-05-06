@@ -15,10 +15,10 @@
     --toggle-color: #DDD;
     --text-color: #707070;
 
-    --tran-02: all 0.2s esse;
-    --tran-03: all 0.3s esse;
-    --tran-04: all 0.4s esse;
-    --tran-05: all 0.5s esse;
+    --tran-02: all 0.2s;
+    --tran-03: all 0.3s;
+    --tran-04: all 0.4s;
+    --tran-05: all 0.5s;
 }
 
 body{

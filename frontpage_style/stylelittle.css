@@ -6,7 +6,7 @@
 }
 
 :root {
-    --text-color: #FFF;
+    --text-color: #90b4d7;;
 
     --tran-03: all 0.3s;
     --tran-05: all 0.5s;
@@ -20,6 +20,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 nav{

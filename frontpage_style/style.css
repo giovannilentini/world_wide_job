@@ -67,7 +67,7 @@ nav .logo{
     padding: 18px 70px;
     border-radius: 50px;
     margin-top: 20px;
-    transition: background-color 0.3s;
+    transition: var(--tran-05);;
 }
 
 .content a:hover{

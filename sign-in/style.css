@@ -51,7 +51,7 @@ nav{
 }
 
 nav .logo{
-    width: 160px;
+    width: 16vh;
 }
 
 .wrapper {
@@ -168,18 +168,26 @@ nav .logo{
 
 @media screen and (max-width: 768px) {
     .wrapper {
-        width: 90%;
+        width: 60%;
     }
     nav .logo {
-        width: 50%;
+        width: 20%;
     }
 }
 
 @media screen and (max-width: 480px) {
     .wrapper {
-        width: 90%;
+        width: 80%;
+
     }
     nav .logo {
-        width: 50%;
+        width: 20%;
+    }
+}
+
+@media screen and (max-height: 700px) {
+    
+    nav {
+       margin-top: 100%;
     }
 }

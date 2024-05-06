@@ -34,9 +34,9 @@ nav{
 }
 
 nav .logo{
-    width: 200px;
-    margin-left: -80px;
-    margin-top: -20px;
+    width: 90px;
+    margin-left: 20vh;
+    margin-top: 12px;
 }
 
 nav ul li{

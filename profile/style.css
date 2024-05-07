@@ -13,7 +13,7 @@
     --primary-color: #695CFE;
     --primary-color-light: #F6F5FF;
     --toggle-color: #DDD;
-    --text-color: #707070;
+    --text-color: #454545;
     --post-color: #eee;
 
     --tran-02: all 0.2s;
@@ -283,6 +283,7 @@ body.dark .switch::before{
     border-radius: 50%;
     margin-bottom: 20px;
     object-fit: cover;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .home .posts {

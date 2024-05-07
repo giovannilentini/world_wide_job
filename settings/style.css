@@ -14,6 +14,7 @@
     --primary-color-light: #F6F5FF;
     --toggle-color: #DDD;
     --text-color: #454545;
+    --box-color: rgb(240, 232, 232);
 
     --tran-02: all 0.2s;
     --tran-03: all 0.3s;
@@ -60,7 +61,7 @@ body.dark{
     font-size: 16px;
     font-weight: 500;
     color: var(--text-color);
-    transition: var(--tran-03);
+    transition: var(--tran-02);
     white-space: nowrap;
     opacity: 1;
 }
@@ -243,7 +244,7 @@ body.dark .menu-bar .mode i.moon{
     transition: var(--tran-03);
 }
 
-body.dark .switch::before{
+body .dark .switch::before{
     left: 24px;
 }
 
@@ -256,12 +257,91 @@ body.dark .switch::before{
     transition: var(--tran-05);
 }
 
-.home .text{
-    font-size: 30px;
-    font-weight: 500;
-    color: var(--text-color);
-    padding: 8px 40px;
+.home .container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
 }
+
+.home .settings {
+    flex: 2;
+    width: 60%;
+    background-color: var(--sidebar-color);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    align-items: center;
+    text-align: center;
+    display: inline-block;
+    gap: 16px;
+}
+
+.pic {
+    /*
+    width: 200px;
+    height: 200px;*/
+    width: 25vh;
+    height: 25vh;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, filter 0.3s ease;
+    position: relative;
+    margin-top: 14px;
+    border: 0.5px solid #333;
+}
+
+.pic:hover {
+    transform: scale(1.1);
+    filter: brightness(0.7);
+}
+
+.pic-container {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
+
+.pic-container:hover .edit-box {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.edit-box {
+    position: absolute;
+    bottom: 4px;
+    left: -10%;
+    transform: translateX(-50%);
+    background-color: var(--box-color);
+    border: 1.5px solid #4a4a4a;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.edit-box span {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.edit-box i {
+    font-size: 16px;
+    color: #333;
+}
+
 
 .sidebar.close ~ .home{
     left: 88px;
@@ -270,6 +350,57 @@ body.dark .switch::before{
 
 .sidebar.close .exitbutton{
     display: none;
+}
+
+.home h1 {
+    font-size: 32px;
+    color: var(--text-color);
+}
+
+.home h2 {
+    color: var(--text-color);
+}
+
+.title {
+   display: flex;
+   margin-top: -5px;
+   border-bottom: 1px solid var(--text-color); 
+}
+
+.info-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.info-box label {
+    margin-bottom: 2px;
+    color: var(--text-color);
+    align-self: flex-start;
+    font-size: 18px;
+}
+
+.info-box input {
+    width: 50%;
+    padding: 8px;
+    border: 1px solid var(--toggle-color);
+    background-color: var(--sidebar-color);
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.info-box textarea {
+    width: 50%;
+    padding: 8px;
+    border: 1px solid var(--toggle-color);
+    background-color: var(--sidebar-color);
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s;
 }
 
 @media only screen and (min-width: 501px)
@@ -333,5 +464,9 @@ body.dark .switch::before{
         display: flex;
         background-color: transparent;
         font-size: 30px;
+    }
+    .pic {
+        width: 15vh;
+        height: 15vh;
     }
 }

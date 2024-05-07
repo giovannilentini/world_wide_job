@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -29,7 +33,7 @@
 
             <div class="text header-text">
                 <span class="name">WorldWideJob</span>
-                <span class="profession">Welcome, *user*</span>
+                <span class="profession">Welcome, <?php echo $_SESSION['session_name'] ?></span>
             </div>
             <span class="exitbutton mobile-toggle"><i class='bx bx-x'></i></span>
         </div>
@@ -72,7 +76,7 @@
 
         <div class="bottom-content">
             <li class="">
-                <a href="">
+                <a href="../database/logout.php">
                     <i class="bx bx-log-out icon"></i>
                     <span class="text vav-text">Logout</span>
                 </a>
@@ -101,4 +105,5 @@
 <script src="script.js"></script>
 
 </body>
+
 </html>

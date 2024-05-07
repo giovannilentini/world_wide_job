@@ -52,9 +52,11 @@ if (isset($_POST['register'])) {
             $check->execute();
             
             if ($check->rowCount() > 0) {
-                $msg = 'Registrazione eseguita con successo';
+                $msg = 'Registrazione eseguita con successo, verrai reindirizzato automaticamente alla pagina di login entro 3 secondi!';
+                header("refresh:3;url=../sign-in/sign-in.htm");
             } else {
                 $msg = 'Problemi con l\'inserimento dei dati %s';
+                header("refresh:3;url=../sign-in/sign-in.htm");
             }
         }
     }

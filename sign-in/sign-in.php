@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Controlla se l'utente è già autenticato
+if (isset($_SESSION['session_id'])) {
+    header('Location: ../home/main.htm');
+    exit;
+}
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -28,16 +38,16 @@
 
         <div class="wrapper">
         
-            <form action="" method="post">
+            <form action="../database/login.php" method="post">
     
                 <h1>Login</h1>
     
                 <div class="input-box">
-                    <input type="text" placeholder="Email" required>
+                    <input type="text" name="email" placeholder="Email" required>
                     <i class='bx bxs-envelope' ></i>
                 </div>
                 <div class="input-box">
-                    <input type="password" placeholder="Password" required>
+                    <input type="password" name="password" placeholder="Password" required>
                     <i class='bx bxs-lock-alt'></i>
                 </div>
     
@@ -46,7 +56,7 @@
                     <a href="#">Forgot Password?</a>
                 </div>
     
-                <button type="submit" class="btn">Login</button>
+                <button type="submit" name="login" class="btn">Login</button>
     
                 <div class="register-link">
                     <p>Don't have an account?<a href="../sign-up/sign-up.htm"> Sign Up</a></p>

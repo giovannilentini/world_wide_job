@@ -14,6 +14,7 @@
     --primary-color-light: #F6F5FF;
     --toggle-color: #DDD;
     --text-color: #454545;
+    --post-color: #eee;
 
     --tran-02: all 0.2s;
     --tran-03: all 0.3s;
@@ -115,11 +116,13 @@ body.dark{
 header .image-text .header-text{
     display: flex;
     flex-direction: column;
+    transition: var(--tran-05);
 }
 
 .header-text .name{
     font-weight: 600;
 }
+
 .header-text .profession{
     margin-top: -2px;
 }
@@ -256,11 +259,59 @@ body.dark .switch::before{
     transition: var(--tran-05);
 }
 
-.home .text{
-    font-size: 30px;
-    font-weight: 500;
-    color: var(--text-color);
-    padding: 8px 40px;
+.home .container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.home .profile {
+    flex: 1;
+    max-width: 300px;
+    margin-right: 20px;
+    background-color: var(--sidebar-color);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.home .profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.home .posts {
+    flex: 2;
+    background-color: var(--sidebar-color);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: grid;
+    gap: 16px;
+}
+
+.home .profile h2 {
+    margin-top: 0;
+}
+
+.home .post {
+    background-color: var(--post-color);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.home .post h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.home .post p {
+    margin: 0;
 }
 
 .sidebar.close ~ .home{

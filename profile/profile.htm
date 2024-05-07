@@ -1,7 +1,3 @@
-<?php
-session_start();
-
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -18,7 +14,7 @@ session_start();
     <!-- ===== Boxicons ===== -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <title>Home </title>
+    <title>Personal Profile</title>
 
 </head>
 <body>
@@ -33,7 +29,7 @@ session_start();
 
             <div class="text header-text">
                 <span class="name">WorldWideJob</span>
-                <span class="profession">Welcome, <?php echo $_SESSION['session_name'] ?></span>
+                <span class="profession">Welcome, *user*</span>
             </div>
             <span class="exitbutton mobile-toggle"><i class='bx bx-x'></i></span>
         </div>
@@ -76,7 +72,7 @@ session_start();
 
         <div class="bottom-content">
             <li class="">
-                <a href="../database/logout.php">
+                <a href="">
                     <i class="bx bx-log-out icon"></i>
                     <span class="text vav-text">Logout</span>
                 </a>
@@ -99,11 +95,34 @@ session_start();
 </nav>
 
 <section class="home">
-    <div class="text">MAIN</div>
+    <div class="container">
+        <div class="profile">
+            <img src="../images/default-profile-image.png" alt="Immagine Profilo" id="profile-image">
+            <h2>Dati del Profilo</h2>
+            <p>Biografia: ciao sono flaviettino in cerca di un aiutino</p>
+            <p>Nome: Flaviettino Pecchiolino</p>
+            <p>Email: flavietto@lollino.com</p>
+            <p>Età: 57 anni</p>
+        </div>
+        <div class="posts">
+            <h2>I Miei Post</h2>
+            <div class="post">
+                <h3>Titolo del Post 1</h3>
+                <p>Cerco qualcuno che mi coachi su lol, offro ben 23,67$</p>
+            </div>
+            <div class="post">
+                <h3>Titolo del Post 2</h3>
+                <p>Offro 28,39$ a chi mi aiuta a pulire il bagno di casa mia</p>
+            </div>
+            <div class="post">
+                <h3>Titolo del Post 3</h3>
+                <p>Per 50$ chi mi fa un decision tree</p>
+            </div>
+        </div>
+    </div>
 </section>
 
 <script src="script.js"></script>
 
 </body>
-
 </html>

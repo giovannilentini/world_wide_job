@@ -24,6 +24,24 @@ if (isset($_SESSION['session_id'])) {
 
     <link rel="stylesheet" href="style.css">
 
+    <script>
+        window.addEventListener('keydown', function(event) {
+            if ((event.ctrlKey || event.metaKey) && (event.key === '+' || event.key === '-' || event.key === '0')) {
+                event.preventDefault();
+            }
+        });
+    
+        window.addEventListener('wheel', function(event) {
+            if (event.ctrlKey || event.metaKey) {
+                event.preventDefault();
+            }
+        });
+
+        function resetZoom() {
+        document.body.style.zoom = '90%';
+    }
+    </script>
+
 </head>
 <body>
 

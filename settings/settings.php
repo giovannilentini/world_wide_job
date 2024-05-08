@@ -34,6 +34,7 @@ if (empty($profile_image_src)) {
     <!-- ===== Boxicons ===== -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
+
     <title>Home </title>
 
 </head>
@@ -136,17 +137,18 @@ if (empty($profile_image_src)) {
                 
                 <div class="info-box">
                     <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="nome" placeholder="inserire qui il tuo nome...">
+                    <input class="input-text" type="text" id="nome" name="nome" placeholder="inserire qui il tuo nome...">
                 </div>
                 
                 <div class="info-box">
                     <label for="cognome">Cognome:</label>
-                    <input type="text" id="cognome" name="cognome" placeholder="inserire qui il tuo cognome...">
+                    <input class="input-text" type="text" id="cognome" name="cognome" placeholder="inserire qui il tuo cognome...">
                 </div>
 
                 <div class="info-box">
                     <label for="cognome">Biografia:</label>
                     <textarea id="bio" name="bio" rows="4" placeholder="inserire qui la tua bio..."></textarea>
+                    <button type="submit" class="sub">Submit</button>
                 </div>
 
                 <div class="title">
@@ -171,18 +173,8 @@ if (empty($profile_image_src)) {
                 <div class="info-box">
                     <label for="confpassword">Conferma Password:</label>
                     <input type="password" id="confpassword" name="confpassword" placeholder="inserire qui la nuova password...">
+                    <button type="submit" class="sub">Submit</button>
                 </div>
-            
-                <!--
-                <label for="cognome">Cognome:</label>
-                <input type="text" id="cognome" name="cognome" required>
-            
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-                -->
             </div>
                    
         </div>

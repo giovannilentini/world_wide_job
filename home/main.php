@@ -46,7 +46,7 @@ session_start();
                 <input type="search" placeholder="Search...">
             </li>
             <li class="nav-link">
-                <a href="../home/main.htm">
+                <a href="../home/main.php">
                     <i class="bx bx-home icon"></i>
                     <span class="text vav-text">Home</span>
                 </a>
@@ -65,7 +65,7 @@ session_start();
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="../settings/settings.htm">
+                    <a href="../settings/settings.php">
                         <i class="bx bx-cog icon"></i>
                         <span class="text vav-text">Settings</span>
                     </a>

@@ -3,7 +3,7 @@ session_start();
 
 // Controlla se l'utente è già autenticato
 if (isset($_SESSION['session_id'])) {
-    header('Location: ../home/main.htm');
+    header('Location: ../home/main.php');
     exit;
 }
 ?>

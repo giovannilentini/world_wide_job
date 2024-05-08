@@ -15,7 +15,7 @@ if (isset($_POST['login'])) {
         $msg = 'Inserisci email e password %s';
     } else {
         $query = "
-            SELECT email, password, name, surname
+            SELECT id, email, password, name, surname, birthdate
             FROM users
             WHERE email = :email
         ";
@@ -30,10 +30,11 @@ if (isset($_POST['login'])) {
             $msg = 'Credenziali utente errate %s';
         } else {
             session_regenerate_id();
-            $_SESSION['session_id'] = session_id();
-            $_SESSION['session_user'] = $user['email'];
+            $_SESSION['session_id'] = $user['id'];
+            $_SESSION['session_email'] = $user['email'];
             $_SESSION['session_name'] = $user['name'];
             $_SESSION['session_surname'] = $user['surname'];
+            $_SESSION['session_birthdate'] = $user['birthdate'];
             
             header('Location: ../home/main.php');
             exit;

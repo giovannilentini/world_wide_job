@@ -1,3 +1,23 @@
+<?php
+session_start();
+
+$profile_image_folder = '../profileimages/';
+$session_id = $_SESSION['session_id'];
+$allowed_extensions = ['png', 'jpg', 'jpeg'];
+$profile_image_src = '';
+foreach ($allowed_extensions as $extension) {
+    $profile_image_path = $profile_image_folder . $session_id . '.' . $extension;
+    if (file_exists($profile_image_path)) {
+        $profile_image_src = $profile_image_path;
+        break;
+    }
+}
+
+if (empty($profile_image_src)) {
+    $profile_image_src = '../images/default-profile-image.png';
+}
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -29,7 +49,7 @@
 
             <div class="text header-text">
                 <span class="name">WorldWideJob</span>
-                <span class="profession">Welcome, *user*</span>
+                <span class="profession">Welcome, <?php echo $_SESSION['session_name']?></span>
             </div>
             <span class="exitbutton mobile-toggle"><i class='bx bx-x'></i></span>
         </div>
@@ -42,14 +62,14 @@
                 <input type="search" placeholder="Search...">
             </li>
             <li class="nav-link">
-                <a href="../home/main.htm">
+                <a href="../home/main.php">
                     <i class="bx bx-home icon"></i>
                     <span class="text vav-text">Home</span>
                 </a>
             </li>
             <ul class="menu-links">
                 <li class="nav-link">
-                    <a href="../profile/profile.htm">
+                    <a href="../profile/profile.php">
                         <i class='bx bx-user icon'></i>
                         <span class="text vav-text">Profile</span>
                     </a>
@@ -61,7 +81,7 @@
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="../settings/settings.htm">
+                    <a href="../settings/settings.php">
                         <i class="bx bx-cog icon"></i>
                         <span class="text vav-text">Settings</span>
                     </a>
@@ -72,7 +92,7 @@
 
         <div class="bottom-content">
             <li class="">
-                <a href="">
+                <a href="../database/logout.php">
                     <i class="bx bx-log-out icon"></i>
                     <span class="text vav-text">Logout</span>
                 </a>
@@ -102,11 +122,12 @@
             </div>
             <h2>Profile Picture</h2>
             <div class="pic-container" id="profile-pic-container">
-                <img class="pic" src="../images/default-profile-image.png" alt="Immagine Profilo" id="profile-image">
+                <img class="pic" src="<?php echo $profile_image_src; ?>" alt="Immagine Profilo" id="profile-image">
                 <div class="edit-box" id="edit-box">
                     <i class='bx bxs-edit-alt'></i>
                     <span>Edit</span>
                 </div>
+                <div id="uploadResult"></div>
             </div>
             <div>
                 <div class="title">
@@ -171,34 +192,42 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
     const profilePic = document.getElementById('profile-image');
-    
-    // Aggiungi un listener per il click sull'immagine di profilo
     profilePic.addEventListener('click', function() {
-        // Crea un input di tipo file per consentire all'utente di selezionare un'immagine
         const fileInput = document.createElement('input');
         fileInput.type = 'file';
-        fileInput.accept = 'image/*'; // Accetta solo file di tipo immagine
-        
-        // Aggiungi un listener per il cambiamento del file
+        fileInput.accept = 'image/*'; 
         fileInput.addEventListener('change', function(event) {
-            const file = event.target.files[0]; // Ottieni il file selezionato
+            const file = event.target.files[0]; 
             const reader = new FileReader();
-            
-            // Leggi il contenuto del file come URL di dati
             reader.readAsDataURL(file);
-            
-            // Quando il file viene letto correttamente
             reader.onload = function() {
-                // Imposta l'URL dei dati come sorgente dell'immagine di profilo
                 profilePic.src = reader.result;
             }
+            uploadImage(file);
         });
-        
-        // Simula il click sull'input di tipo file per aprire il selettore del file
         fileInput.click();
     });
 });
 
+function uploadImage(imageFile) {
+    var formData = new FormData();
+    formData.append("profileImage", imageFile);
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "upload.php", true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            document.getElementById("uploadResult").innerHTML=xhr.responseText;
+        } else {
+            document.getElementById("uploadResult").innerHTML="Errore durante l'upload dell'immagine.";
+        }
+    };
+    xhr.send(formData);
+}
+
+function getFileExtension(filename) {
+    return filename.split('.').pop().toLowerCase();
+}
 </script>
 
 <script src="script.js"></script>

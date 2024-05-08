@@ -40,7 +40,7 @@ if (isset($_POST['register'])) {
         } else {
             $query = "
                 INSERT INTO users
-                VALUES (0, :name, :surname, :birthdate, :email, :password)
+                VALUES (0, :name, :surname, :birthdate, :email, :password, NULL)
             ";
         
             $check = $pdo->prepare($query);
@@ -53,10 +53,10 @@ if (isset($_POST['register'])) {
             
             if ($check->rowCount() > 0) {
                 $msg = 'Registrazione eseguita con successo, verrai reindirizzato automaticamente alla pagina di login entro 3 secondi!';
-                header("refresh:3;url=../sign-in/sign-in.htm");
+                header("refresh:3;url=../sign-in/sign-in.php");
             } else {
                 $msg = 'Problemi con l\'inserimento dei dati %s';
-                header("refresh:3;url=../sign-in/sign-in.htm");
+                header("refresh:3;url=../sign-up/sign-up.php");
             }
         }
     }

@@ -34,3 +34,14 @@ sidebar.addEventListener("mouseenter", showSidebar);
             modeText.innerText = "Dark Mode";
         }
     });
+
+    function checkAge(tempdate) {
+        var today = tempdate;
+        var birthdate = new Date(document.reg.birthdate.value);
+        var age = today.getFullYear() - birthdate.getFullYear();
+        var m = today.getMonth() - birthdate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthdate.getDate())) {
+            age--;
+        }
+        return age;
+    }

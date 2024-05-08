@@ -53,7 +53,7 @@ session_start();
             </li>
             <ul class="menu-links">
                 <li class="nav-link">
-                    <a href="../profile/profile.htm">
+                    <a href="../profile/profile.php">
                         <i class='bx bx-user icon'></i>
                         <span class="text vav-text">Profile</span>
                     </a>

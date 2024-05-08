@@ -1,3 +1,31 @@
+<?php
+session_start();
+
+$profile_image_folder = '../profileimages/';
+$session_id = $_SESSION['session_id'];
+$allowed_extensions = ['png', 'jpg', 'jpeg'];
+$profile_image_src = '';
+foreach ($allowed_extensions as $extension) {
+    $profile_image_path = $profile_image_folder . $session_id . '.' . $extension;
+    if (file_exists($profile_image_path)) {
+        $profile_image_src = $profile_image_path;
+        break;
+    }
+}
+
+if (empty($profile_image_src)) {
+    $profile_image_src = '../images/default-profile-image.png';
+}
+
+function checkAge($birthdate) {
+    $today = new DateTime();
+    $birthdate = new DateTime($birthdate); 
+    $age = $today->diff($birthdate)->y;
+    return $age; 
+}
+?>
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -29,7 +57,7 @@
 
             <div class="text header-text">
                 <span class="name">WorldWideJob</span>
-                <span class="profession">Welcome, *user*</span>
+                <span class="profession">Welcome, <?php echo $_SESSION['session_name'] ?></span>
             </div>
             <span class="exitbutton mobile-toggle"><i class='bx bx-x'></i></span>
         </div>
@@ -42,14 +70,14 @@
                 <input type="search" placeholder="Search...">
             </li>
             <li class="nav-link">
-                <a href="../home/main.htm">
+                <a href="../home/main.php">
                     <i class="bx bx-home icon"></i>
                     <span class="text vav-text">Home</span>
                 </a>
             </li>
             <ul class="menu-links">
                 <li class="nav-link">
-                    <a href="../profile/profile.htm">
+                    <a href="../profile/profile.php">
                         <i class='bx bx-user icon'></i>
                         <span class="text vav-text">Profile</span>
                     </a>
@@ -61,7 +89,7 @@
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="../settings/settings.htm">
+                    <a href="../settings/settings.php">
                         <i class="bx bx-cog icon"></i>
                         <span class="text vav-text">Settings</span>
                     </a>
@@ -72,7 +100,7 @@
 
         <div class="bottom-content">
             <li class="">
-                <a href="">
+                <a href="../database/logout.php ">
                     <i class="bx bx-log-out icon"></i>
                     <span class="text vav-text">Logout</span>
                 </a>
@@ -97,12 +125,13 @@
 <section class="home">
     <div class="container">
         <div class="profile">
-            <img src="../images/default-profile-image.png" alt="Immagine Profilo" id="profile-image">
+            <img src="<?php echo $profile_image_src?>" alt="Immagine Profilo" id="profile-image">
             <h2>Dati del Profilo</h2>
-            <p>Biografia: ciao sono flaviettino in cerca di un aiutino</p>
-            <p>Nome: Flaviettino Pecchiolino</p>
-            <p>Email: flavietto@lollino.com</p>
-            <p>Età: 57 anni</p>
+            <p>Biografia: </p>
+            <p>Nome: <?php echo $_SESSION['session_name'] ?></p>
+            <p>Email: <?php echo $_SESSION['session_email'] ?></p>
+            <p>Età: <?php echo checkAge($_SESSION['session_birthdate']) ?>;</script></p>
+
         </div>
         <div class="posts">
             <h2>I Miei Post</h2>

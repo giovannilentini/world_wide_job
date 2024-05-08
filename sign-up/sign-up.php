@@ -71,15 +71,11 @@
                     <i class='bx bxs-lock-alt'></i>
                 </div>
     
-                <div class="agree">
-                    <label><input type="checkbox" required>I agree to the terms & conditions</label>
-                </div>
-    
                 <button type="submit" id="submit-btn" name="register" class="btn">Register</button>
 
     
                 <div class="login-link">
-                    <p>Already have an account?<a href="../sign-in/sign-in.htm"> Sign In</a></p>
+                    <p>Already have an account?<a href="../sign-in/sign-in.php"> Sign In</a></p>
                 </div>
             </form>
         </div>

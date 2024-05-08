@@ -469,4 +469,9 @@ body .dark .switch::before{
         width: 15vh;
         height: 15vh;
     }
+
+    .uploadResult.errorResponse
+    {
+        color:red;
+    }
 }

@@ -63,6 +63,7 @@ nav{
 }
 
 nav .logo{
+    position: fixed;
     width: 16vh;
 }
 

@@ -127,7 +127,7 @@ if (empty($profile_image_src)) {
                     <i class='bx bxs-edit-alt'></i>
                     <span>Edit</span>
                 </div>
-                <div id="uploadResult"></div>
+                <div id="uploadResult" style="color: green"></div>
             </div>
             <div>
                 <div class="title">
@@ -190,7 +190,7 @@ if (empty($profile_image_src)) {
 </section>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     const profilePic = document.getElementById('profile-image');
     profilePic.addEventListener('click', function() {
         const fileInput = document.createElement('input');
@@ -199,17 +199,25 @@ if (empty($profile_image_src)) {
         fileInput.addEventListener('change', function(event) {
             const file = event.target.files[0]; 
             const reader = new FileReader();
-            reader.readAsDataURL(file);
+            
             reader.onload = function() {
                 profilePic.src = reader.result;
             }
-            uploadImage(file);
+            
+            if (file && file.type.startsWith('image/')) {
+                reader.readAsDataURL(file); 
+                uploadImage(file);
+            } else {
+                document.getElementById("uploadResult").style.color = "red";
+                document.getElementById("uploadResult").innerHTML="Estensione non consentita, scegliere un file JPEG o PNG.";
+            }
         });
         fileInput.click();
     });
 });
 
 function uploadImage(imageFile) {
+    document.getElementById("uploadResult").style.color = "green";
     var formData = new FormData();
     formData.append("profileImage", imageFile);
     
@@ -217,9 +225,16 @@ function uploadImage(imageFile) {
     xhr.open("POST", "upload_image.php", true);
     xhr.onload = function() {
         if (xhr.status === 200) {
+            if(xhr.responseText!="Immagine caricata con successo.")
+            {
+                document.getElementById("uploadResult").style.color = "red";
+            }
             document.getElementById("uploadResult").innerHTML=xhr.responseText;
+        
         } else {
+            document.getElementById("uploadResult").style.color = "red";
             document.getElementById("uploadResult").innerHTML="Errore durante l'upload dell'immagine.";
+            
         }
     };
     xhr.send(formData);

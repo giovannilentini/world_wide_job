@@ -164,7 +164,7 @@ if (empty($profile_image_src)) {
                 </div>
 
                 <div class="info-box">
-                    <label for="newpassword">Vecchia Password:</label>
+                    <label for="newpassword">Nuova Password:</label>
                     <input type="password" id="newpassword" name="newpassword" placeholder="inserire qui la nuova password...">
                 </div>
 
@@ -214,7 +214,7 @@ function uploadImage(imageFile) {
     formData.append("profileImage", imageFile);
     
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "upload.php", true);
+    xhr.open("POST", "upload_image.php", true);
     xhr.onload = function() {
         if (xhr.status === 200) {
             document.getElementById("uploadResult").innerHTML=xhr.responseText;

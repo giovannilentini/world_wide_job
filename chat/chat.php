@@ -1,30 +1,6 @@
 <?php
 session_start();
 
-$profile_image_folder = '../profileimages/';
-$session_id = $_SESSION['session_id'];
-$allowed_extensions = ['png', 'jpg', 'jpeg'];
-$profile_image_src = '';
-foreach ($allowed_extensions as $extension) {
-    $profile_image_path = $profile_image_folder . $session_id . '.' . $extension;
-    if (file_exists($profile_image_path)) {
-        $profile_image_src = $profile_image_path;
-        break;
-    }
-}
-
-if (empty($profile_image_src)) {
-    $profile_image_src = '../images/default-profile-image.png';
-}
-
-function checkAge($birthdate) {
-    $today = new DateTime();
-    $birthdate = new DateTime($birthdate); 
-    $age = $today->diff($birthdate)->y;
-    return $age; 
-}
-?>
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -42,7 +18,12 @@ function checkAge($birthdate) {
     <!-- ===== Boxicons ===== -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <title>Personal Profile</title>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <title>WorldWideJob Chat</title>
 
 </head>
 <body>
@@ -100,7 +81,7 @@ function checkAge($birthdate) {
 
         <div class="bottom-content">
             <li class="">
-                <a href="../database/logout.php ">
+                <a href="../database/logout.php">
                     <i class="bx bx-log-out icon"></i>
                     <span class="text vav-text">Logout</span>
                 </a>
@@ -124,31 +105,91 @@ function checkAge($birthdate) {
 
 <section class="home">
     <div class="container">
-        <div class="profile">
-            <img src="<?php echo $profile_image_src?>" alt="Immagine Profilo" id="profile-image">
-            <h2>Dati del Profilo</h2>
-            <p>Biografia: <?php echo $_SESSION['session_bio'] ?></p>
-            <p>Nome: <?php echo $_SESSION['session_name'] . ' ' . $_SESSION['session_surname'] ?></p>
-            <p>Email: <?php echo $_SESSION['session_email'] ?></p>
-            <p>Età: <?php echo checkAge($_SESSION['session_birthdate']) ?></script></p>
+        <div class="chat-div">
+            
+        <nav>
+            <div class="nav-container">
+                <span class="title">Messages</span>
+            </div>
+        </nav>
+
+        <ul class="conversations">
+
+            <?php
+            include "../database/database.php";
+
+            $user_id = $_SESSION['session_id'];
+
+            $query = "SELECT * FROM users WHERE id != :user_id";
+            $statement = $pdo->prepare($query);
+            $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+            $statement->execute();
+
+            if ($statement->rowCount() > 0) {
+                while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                    $profile_pic_extensions = ['.jpg', '.jpeg', '.png'];
+                    $profile_pic = false;
+
+                    foreach ($profile_pic_extensions as $ext) {
+                        $filename = $row['id'] . $ext;
+                        if (file_exists("../profileimages/" . $filename)) {
+                            $profile_pic = $filename;
+                            break; 
+                        }
+                    }
+
+                    echo "<li class='chat'>";
+
+                    if ($profile_pic) {
+                        echo "<img src='../profileimages/$profile_pic' alt='' class='profile-picture' />";
+                    } else {
+                        echo "<img src='../images/default-profile-image.png' alt='' class='profile-picture' />";
+                    }
+                    echo "<div class='chat-info'>";
+                    echo "<span class='chat-name'>" . $row['name'] . ' ' . $row['surname'] . ": </span>";
+                    echo '<span class="chat-message">Hello there!</span>';
+                    echo "</div>";
+                    echo "</li>";
+                }
+            } else {
+                echo "Nessun utente trovato nel database.";
+            }
+            ?>
+
+        </ul>
+
+        <!--
+        <ul class="conversations">
+            <li class="chat">
+            <img src="../profileimages/1.jpeg" alt="" class="profile-picture" />
+                <div class="chat-info">
+                    <span class="chat-name">John Doe</span>
+                    <span class="chat-message">Hello therel</span>
+                </div>
+            </li>
+        
+            <li class="chat">
+                <span class="chat-online"></span>
+                <img src="../profileimages/1.jpeg" alt="" class="profile-picture" />
+                <div class="chat-info">
+                    <span class="chat-name">Jane Smith</span>
+                    <span class="chat-message">Hey! How are you? </span> 
+                </div>
+            </li>
+        
+            <li class="chat">
+                <img src="../profileimages/1.jpeg" alt="" class="profile-picture" />
+                <div class="chat-info">
+                    <span class="chat-name">Jack Fisher</span>
+                    <span class="chat-message">Hello there!</span>
+                </div>
+            </li>
+        </ul> 
+        -->
 
         </div>
-        <div class="posts">
-            <h2>I Miei Post</h2>
-            <div class="post">
-                <h3>Titolo del Post 1</h3>
-                <p>Cerco qualcuno che mi coachi su lol, offro ben 23,67$</p>
-            </div>
-            <div class="post">
-                <h3>Titolo del Post 2</h3>
-                <p>Offro 28,39$ a chi mi aiuta a pulire il bagno di casa mia</p>
-            </div>
-            <div class="post">
-                <h3>Titolo del Post 3</h3>
-                <p>Per 50$ chi mi fa un decision tree</p>
-            </div>
-        </div>
     </div>
+    
 </section>
 
 <script src="script.js"></script>

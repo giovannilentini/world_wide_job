@@ -76,7 +76,7 @@
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="../chat/chat.htm">
+                    <a href="../chat/chat.php">
                         <i class='bx bx-chat icon'></i>
                         <span class="text vav-text">Chat</span>
                     </a>

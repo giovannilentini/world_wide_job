@@ -14,6 +14,7 @@
     --primary-color-light: #F6F5FF;
     --toggle-color: #DDD;
     --text-color: #454545;
+    --chat-color: #f0f0f0;
 
     --tran-02: all 0.2s;
     --tran-03: all 0.3s;
@@ -115,13 +116,11 @@ body.dark{
 header .image-text .header-text{
     display: flex;
     flex-direction: column;
-    transition: var(--tran-05);
 }
 
 .header-text .name{
     font-weight: 600;
 }
-
 .header-text .profession{
     margin-top: -2px;
 }
@@ -258,60 +257,84 @@ body.dark .switch::before{
     transition: var(--tran-05);
 }
 
+.home{
+    position: relative;
+    height: 100vh;
+    left: 250px;
+    width: calc(100% - 250px);
+    background: var(--body-color);
+    transition: var(--tran-05);
+}
+
 .home .container {
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: flex-start;
     padding: 20px;
 }
 
-.home .profile {
-    flex: 1;
-    max-width: 300px;
-    margin-right: 20px;
+.home .chat-div {
+    flex: 2;
+    width: 60%;
     background-color: var(--sidebar-color);
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    text-align: center;
+    align-items: flex-start;
+    text-align: flex-start;
 }
 
-.home .profile img {
-    width: 150px;
-    height: 150px;
+.nav-container .title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333; 
+    margin-right: 10px;
+}
+
+.nav-container .bi-search {
+    font-size: 24px;
+    color: #999999;
+    cursor: pointer;
+}
+
+.chat {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: var(--chat-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.chat:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    filter: brightness(90%);
+}
+
+.profile-picture {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    margin-bottom: 20px;
+    margin-right: 10px;
     object-fit: cover;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.home .posts {
-    flex: 2;
-    background-color: var(--sidebar-color);
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    display: grid;
-    gap: 16px;
+.chat-info {
+    flex: 1; 
 }
 
-.home .profile h2 {
-    margin-top: 0;
+.chat-name {
+    font-weight: 600;
+    color: #333333; 
 }
 
-.home .post {
-    background-color: var(--post-color);
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+.chat-message {
+    color: #666666;
 }
-.home .post h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-.home .post p {
-    margin: 0;
-}
+
 
 .sidebar.close ~ .home{
     left: 88px;

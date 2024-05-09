@@ -76,7 +76,7 @@ if (isset($_SESSION['session_id'])) {
                 <button type="submit" name="login" class="btn">Login</button>
     
                 <div class="register-link">
-                    <p>Don't have an account?<a href="../sign-up/sign-up.htm"> Sign Up</a></p>
+                    <p>Don't have an account?<a href="../sign-up/sign-up.php"> Sign Up</a></p>
                 </div>
             </form>
         </div>

@@ -7,6 +7,7 @@ if (isset($_POST['register'])) {
     $birthdate = $_POST['birthdate'] ?? '';
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
+    $bio = $_POST['bio'] ?? '';
     $isEmailValid = filter_var(
         $email,
         FILTER_VALIDATE_EMAIL
@@ -40,7 +41,7 @@ if (isset($_POST['register'])) {
         } else {
             $query = "
                 INSERT INTO users
-                VALUES (0, :name, :surname, :birthdate, :email, :password, NULL)
+                VALUES (0, :name, :surname, :birthdate, :email, :password, NULL, :bio)
             ";
         
             $check = $pdo->prepare($query);
@@ -49,6 +50,7 @@ if (isset($_POST['register'])) {
             $check->bindParam(':birthdate', $birthdate, PDO::PARAM_STR);
             $check->bindParam(':email', $email, PDO::PARAM_STR);
             $check->bindParam(':password', $password_hash, PDO::PARAM_STR);
+            $check->bindParam(':bio', $bio, PDO::PARAM_STR);
             $check->execute();
             
             if ($check->rowCount() > 0) {

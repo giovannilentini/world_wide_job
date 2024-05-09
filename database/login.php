@@ -15,7 +15,7 @@ if (isset($_POST['login'])) {
         $msg = 'Inserisci email e password %s';
     } else {
         $query = "
-            SELECT id, email, password, name, surname, birthdate
+            SELECT *
             FROM users
             WHERE email = :email
         ";
@@ -27,7 +27,7 @@ if (isset($_POST['login'])) {
         $user = $check->fetch(PDO::FETCH_ASSOC);
         
         if (!$user || password_verify($password, $user['password']) === false) {
-            $msg = 'Credenziali utente errate %s';
+            $msg = 'Credenziali utente errate %s'; 
         } else {
             session_regenerate_id();
             $_SESSION['session_id'] = $user['id'];
@@ -35,7 +35,9 @@ if (isset($_POST['login'])) {
             $_SESSION['session_name'] = $user['name'];
             $_SESSION['session_surname'] = $user['surname'];
             $_SESSION['session_birthdate'] = $user['birthdate'];
-            
+            $_SESSION['session_bio'] = $user['bio'];
+            $_SESSION['session_pw'] = $user['pw'];
+                        
             header('Location: ../home/main.php');
             exit;
         }

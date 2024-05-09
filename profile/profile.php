@@ -127,10 +127,10 @@ function checkAge($birthdate) {
         <div class="profile">
             <img src="<?php echo $profile_image_src?>" alt="Immagine Profilo" id="profile-image">
             <h2>Dati del Profilo</h2>
-            <p>Biografia: </p>
-            <p>Nome: <?php echo $_SESSION['session_name'] ?></p>
+            <p>Biografia: <?php echo $_SESSION['session_bio'] ?></p>
+            <p>Nome: <?php echo $_SESSION['session_name'] . ' ' . $_SESSION['session_surname'] ?></p>
             <p>Email: <?php echo $_SESSION['session_email'] ?></p>
-            <p>Età: <?php echo checkAge($_SESSION['session_birthdate']) ?>;</script></p>
+            <p>Età: <?php echo checkAge($_SESSION['session_birthdate']) ?></script></p>
 
         </div>
         <div class="posts">

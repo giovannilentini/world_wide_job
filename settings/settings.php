@@ -1,21 +1,21 @@
 <?php
-session_start();
+    session_start();
 
-$profile_image_folder = '../profileimages/';
-$session_id = $_SESSION['session_id'];
-$allowed_extensions = ['png', 'jpg', 'jpeg'];
-$profile_image_src = '';
-foreach ($allowed_extensions as $extension) {
-    $profile_image_path = $profile_image_folder . $session_id . '.' . $extension;
-    if (file_exists($profile_image_path)) {
-        $profile_image_src = $profile_image_path;
-        break;
+    $profile_image_folder = '../profileimages/';
+    $session_id = $_SESSION['session_id'];
+    $allowed_extensions = ['png', 'jpg', 'jpeg'];
+    $profile_image_src = '';
+    foreach ($allowed_extensions as $extension) {
+        $profile_image_path = $profile_image_folder . $session_id . '.' . $extension;
+        if (file_exists($profile_image_path)) {
+            $profile_image_src = $profile_image_path;
+            break;
+        }
     }
-}
 
-if (empty($profile_image_src)) {
-    $profile_image_src = '../images/default-profile-image.png';
-}
+    if (empty($profile_image_src)) {
+        $profile_image_src = '../images/default-profile-image.png';
+    }
 ?>
 
 <!doctype html>
@@ -135,46 +135,50 @@ if (empty($profile_image_src)) {
                    <h2>Personal Information</h2> 
                 </div>
                 
-                <div class="info-box">
-                    <label for="nome">Nome</label>
-                    <input class="input-text" type="text" id="nome" name="nome" placeholder="inserire qui il tuo nome...">
-                </div>
-                
-                <div class="info-box">
-                    <label for="cognome">Cognome:</label>
-                    <input class="input-text" type="text" id="cognome" name="cognome" placeholder="inserire qui il tuo cognome...">
-                </div>
+                <form name="" action="upload_personal.php" method="POST">
+                    <div class="info-box">
+                        <label for="nome">Nome</label>
+                        <input class="input-text" type="text" id="nome" name="nome" placeholder="inserire qui il tuo nome...">
+                    </div>
+                    
+                    <div class="info-box">
+                        <label for="cognome">Cognome:</label>
+                        <input class="input-text" type="text" id="cognome" name="cognome" placeholder="inserire qui il tuo cognome...">
+                    </div>
 
-                <div class="info-box">
-                    <label for="cognome">Biografia:</label>
-                    <textarea id="bio" name="bio" rows="4" placeholder="inserire qui la tua bio..."></textarea>
-                    <button type="submit" class="sub">Submit</button>
-                </div>
+                    <div class="info-box">
+                            <label for="cognome">Biografia:</label>
+                            <textarea id="bio" name="bio" rows="4" placeholder="inserire qui la tua bio..."></textarea>
+                            <button type="submit" class="sub">Submit</button>
+                    </div>
+                </form>
 
                 <div class="title">
                     <h2>Profile Information</h2> 
                 </div>
 
-                <div class="info-box">
-                    <label for="email">E-mail:</label>
-                    <input type="text" id="email" name="email" placeholder="inserire qui la tua mail...">
-                </div>
+                <form name="" action="upload_profile.php" method="POST">
+                    <div class="info-box">
+                        <label for="email">E-mail:</label>
+                        <input type="text" id="email" name="email" placeholder="inserire qui la tua mail...">
+                    </div>
 
-                <div class="info-box">
-                    <label for="oldpassword">Vecchia Password:</label>
-                    <input type="password" id="oldpassword" name="oldpassword" placeholder="inserire qui la vecchia password...">
-                </div>
+                    <div class="info-box">
+                        <label for="oldpassword">Vecchia Password:</label>
+                        <input type="password" id="oldpassword" name="oldpassword" placeholder="inserire qui la vecchia password...">
+                    </div>
 
-                <div class="info-box">
-                    <label for="newpassword">Nuova Password:</label>
-                    <input type="password" id="newpassword" name="newpassword" placeholder="inserire qui la nuova password...">
-                </div>
+                    <div class="info-box">
+                        <label for="newpassword">Nuova Password:</label>
+                        <input type="password" id="newpassword" name="newpassword" placeholder="inserire qui la nuova password...">
+                    </div>
 
-                <div class="info-box">
-                    <label for="confpassword">Conferma Password:</label>
-                    <input type="password" id="confpassword" name="confpassword" placeholder="inserire qui la nuova password...">
-                    <button type="submit" class="sub">Submit</button>
-                </div>
+                    <div class="info-box">
+                        <label for="confpassword">Conferma Password:</label>
+                        <input type="password" id="confpassword" name="confpassword" placeholder="inserire qui la nuova password...">
+                        <button type="submit" class="sub">Submit</button>
+                    </div>
+                </form>
             </div>
                    
         </div>

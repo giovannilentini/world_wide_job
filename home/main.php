@@ -99,7 +99,38 @@ session_start();
 </nav>
 
 <section class="home">
-    <div class="text">MAIN</div>
+    <div class="container">
+        <div class="homepage">
+            <button id="openModalBtn" class="fb-btn">
+            <img class="fb-profile-img" src="https://via.placeholder.com/30" alt="Profilo">
+            <span>Vuoi creare un nuovo post? </span>
+            </button>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-win">&times;</span>
+                    <h2>Crea un Post</h2>
+                    <input type="text" id="postTitle" placeholder="Titolo del post">
+                    <textarea class="textwin" id="postContent" rows="16" placeholder="Scrivi qualcosa..."></textarea>
+                    <button id="postBtn">Post</button>
+                </div>
+            </div>
+
+            <div class="posts">
+                <div class="post">
+                    <div class="post-header">
+                        <div class="author-info">
+                            <img class="fb-profile-img" src="../images/default-profile-image.png">
+                            <span>Nome Autore</span>
+                        </div>
+                        <h3>Titolo del Post 1</h3>
+                    </div>
+                    <p>Cerco qualcuno che mi coachi su lol, offro ben 23,67$</p>
+                </div>
+                
+            </div>
+
+        </div>
+  </div>
 </section>
 
 <script src="script.js"></script>

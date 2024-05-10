@@ -138,7 +138,7 @@ session_start();
                         }
                     }
 
-                    echo "<li class='chat'>";
+                echo "<li class='chat'>";
 
                     if ($profile_pic) {
                         echo "<img src='../profileimages/$profile_pic' alt='' class='profile-picture' />";
@@ -150,7 +150,7 @@ session_start();
                     echo '<span class="chat-message">Hello there!</span>';
                     echo "</div>";
                     echo "</li>";
-                }
+                    }
             } else {
                 echo "Nessun utente trovato nel database.";
             }

@@ -147,7 +147,7 @@
                     </div>
 
                     <div class="info-box">
-                            <label for="cognome">Biografia:</label>
+                            <label for="bio">Biografia:</label>
                             <textarea id="bio" name="bio" rows="4" placeholder="inserire qui la tua bio..."></textarea>
                             <button type="submit" class="sub">Submit</button>
                     </div>

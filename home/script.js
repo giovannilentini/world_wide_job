@@ -34,3 +34,35 @@ sidebar.addEventListener("mouseenter", showSidebar);
             modeText.innerText = "Dark Mode";
         }
     });
+
+
+/* ===== Modal Window ===== */
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("openModalBtn");
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+document.getElementById("postBtn").addEventListener("click", function() {
+  var postContent = document.getElementById("postContent").value;
+  console.log("Hai postato: " + postContent);
+  modal.style.display = "none";
+});
+
+/* ===== Close Button =====*/
+var closeModalBtn = document.querySelector(".close-win");
+closeModalBtn.addEventListener("click", function() {
+  modal.style.display = "none";
+});

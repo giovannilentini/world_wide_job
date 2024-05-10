@@ -158,35 +158,6 @@ session_start();
 
         </ul>
 
-        <!--
-        <ul class="conversations">
-            <li class="chat">
-            <img src="../profileimages/1.jpeg" alt="" class="profile-picture" />
-                <div class="chat-info">
-                    <span class="chat-name">John Doe</span>
-                    <span class="chat-message">Hello therel</span>
-                </div>
-            </li>
-        
-            <li class="chat">
-                <span class="chat-online"></span>
-                <img src="../profileimages/1.jpeg" alt="" class="profile-picture" />
-                <div class="chat-info">
-                    <span class="chat-name">Jane Smith</span>
-                    <span class="chat-message">Hey! How are you? </span> 
-                </div>
-            </li>
-        
-            <li class="chat">
-                <img src="../profileimages/1.jpeg" alt="" class="profile-picture" />
-                <div class="chat-info">
-                    <span class="chat-name">Jack Fisher</span>
-                    <span class="chat-message">Hello there!</span>
-                </div>
-            </li>
-        </ul> 
-        -->
-
         </div>
     </div>
     

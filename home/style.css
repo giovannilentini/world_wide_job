@@ -286,7 +286,7 @@ body.dark .switch::before{
     color: white;
     border: none;
     border-radius: 50px;
-    padding: 10px 500px 10px 10px;
+    padding: 10px 450px 10px 10px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -303,11 +303,12 @@ body.dark .switch::before{
     height: 30px;
     border-radius: 50%;
     margin-right: 10px;
+    object-fit: cover;
 }
 
 .modal {
     overflow: hidden;
-    display: flex;
+    display: none;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -327,6 +328,7 @@ body.dark .switch::before{
     width: 50%;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 8%;
 }
 
 .close-win {
@@ -382,43 +384,62 @@ input[type="text"]{
 
 .posts {
     margin-top: 20px;
-    flex: 2;
-    background-color: var(--sidebar-color);
-    padding: 20px;
-    border-radius: 5px;
-    display: grid;
-    gap: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
 .post {
-    background-color: var(--post-color);
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    display: flex;
-    justify-content: flex-start; /* Allinea tutto a destra */
-}
-
-.post-content {
-    width: 70%; /* Imposta la larghezza del contenuto del post */
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 850px;
 }
 
 .post-header {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px; /* Aggiungi spazio inferiore tra l'intestazione e il commento */
+}
+
+.author-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
 }
 
 .author-info span {
     font-weight: bold;
 }
 
-.comment-box {
-    border: 1px solid #ccc; /* Aggiungi un bordo grigio */
-    border-radius: 5px;
-    padding: 10px;
+.post-content {
+    padding: 15px;
 }
+
+.post-content h3 {
+    margin-top: 0;
+}
+
+.comment-box {
+    padding: 15px;
+}
+
+.comment-box p {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .post {
+        width: 90%;
+    }
+}
+
 
 .sidebar.close ~ .home{
     left: 88px;

@@ -138,18 +138,18 @@ session_start();
                         }
                     }
 
-                echo "<li class='chat'>";
+                    echo "<li class='chat'>";
 
-                    if ($profile_pic) {
-                        echo "<img src='../profileimages/$profile_pic' alt='' class='profile-picture' />";
-                    } else {
-                        echo "<img src='../images/default-profile-image.png' alt='' class='profile-picture' />";
-                    }
-                    echo "<div class='chat-info'>";
-                    echo "<span class='chat-name'>" . $row['name'] . ' ' . $row['surname'] . ": </span>";
-                    echo '<span class="chat-message">Hello there!</span>';
-                    echo "</div>";
-                    echo "</li>";
+                        if ($profile_pic) {
+                            echo "<img src='../profileimages/$profile_pic' alt='' class='profile-picture' />";
+                        } else {
+                            echo "<img src='../images/default-profile-image.png' alt='' class='profile-picture' />";
+                        }
+                        echo "<div class='chat-info'>";
+                        echo "<span class='chat-name'>" . $row['name'] . ' ' . $row['surname'] . ": </span>";
+                        echo '<span class="chat-message">Hello there!</span>';
+                        echo "</div>";
+                        echo "</li>";
                     }
             } else {
                 echo "Nessun utente trovato nel database.";

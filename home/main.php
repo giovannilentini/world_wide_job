@@ -1,7 +1,24 @@
 <?php
-session_start();
+    session_start();
+
+    $profile_image_folder = '../profileimages/';
+    $session_id = $_SESSION['session_id'];
+    $allowed_extensions = ['png', 'jpg', 'jpeg'];
+    $profile_image_src = '../images/default-profile-image.png';
+    foreach ($allowed_extensions as $extension) {
+        $profile_image_path = $profile_image_folder . $session_id . '.' . $extension;
+        if (file_exists($profile_image_path)) {
+            $profile_image_src = $profile_image_path;
+            break;
+        }
+    }
+
+    if (empty($profile_image_src)) {
+        $profile_image_src = '../images/default-profile-image.png';
+    }
 
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -102,32 +119,41 @@ session_start();
     <div class="container">
         <div class="homepage">
             <button id="openModalBtn" class="fb-btn">
-            <img class="fb-profile-img" src="https://via.placeholder.com/30" alt="Profilo">
+            <img class="fb-profile-img" src="<?php echo $profile_image_src?>" alt="Profilo">
             <span>Vuoi creare un nuovo post? </span>
             </button>
             <div id="myModal" class="modal">
-                <div class="modal-content">
-                    <span class="close-win">&times;</span>
-                    <h2>Crea un Post</h2>
-                    <input type="text" id="postTitle" placeholder="Titolo del post">
-                    <textarea class="textwin" id="postContent" rows="16" placeholder="Scrivi qualcosa..."></textarea>
-                    <button id="postBtn">Post</button>
-                </div>
+                <form name="" action="newpost.php" method="POST">
+                    <div class="modal-content">
+                        <span class="close-win">&times;</span>
+                        <h2>Crea un Post</h2>
+                        <input type="text" id="postTitle" placeholder="Titolo del post" required>
+                        <textarea class="textwin" id="postContent" rows="16" placeholder="Scrivi qualcosa..."required></textarea>
+                        <button id="postBtn">Post</button>
+                    </div>
+                </form>
             </div>
+
+            <!-- ../images/default-profile-image.png -->
 
             <div class="posts">
                 <div class="post">
                     <div class="post-header">
                         <div class="author-info">
-                            <img class="fb-profile-img" src="../images/default-profile-image.png">
+                            <img src="../images/default-profile-image.png" alt="Nome Autore">
                             <span>Nome Autore</span>
                         </div>
-                        <h3>Titolo del Post 1</h3>
                     </div>
-                    <p>Cerco qualcuno che mi coachi su lol, offro ben 23,67$</p>
+                    <div class="post-content">
+                        <h3>Titolo del Post 1</h3>
+                        <div class="comment-box">
+                            <p>Cerco qualcuno che mi coachi su lol, offro ben 23,67$</p>
+                        </div>
+                    </div>
                 </div>
-                
+               
             </div>
+
 
         </div>
   </div>

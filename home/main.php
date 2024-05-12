@@ -123,20 +123,19 @@
             <span>Vuoi creare un nuovo post? </span>
             </button>
             <div id="myModal" class="modal">
-                <form name="" action="newpost.php" method="POST">
                     <div class="modal-content">
+                    <form name="" action="newpost.php" method="POST">
                         <span class="close-win">&times;</span>
                         <h2>Crea un Post</h2>
-                        <input type="text" id="postTitle" placeholder="Titolo del post" required>
-                        <textarea class="textwin" id="postContent" rows="16" placeholder="Scrivi qualcosa..."required></textarea>
+                        <input type="text" name="postTitle" placeholder="Titolo del post" required>
+                        <textarea class="textwin" name="postContent" rows="16" placeholder="Scrivi qualcosa..."required></textarea>
                         <button id="postBtn">Post</button>
+                    </form>
                     </div>
-                </form>
             </div>
 
-            <!-- ../images/default-profile-image.png -->
-
             <div class="posts">
+                <!--
                 <div class="post">
                     <div class="post-header">
                         <div class="author-info">
@@ -151,7 +150,50 @@
                         </div>
                     </div>
                 </div>
-               
+                -->
+
+                
+                <?php
+                    require_once('../database/database.php');
+                    
+                    $query = "SELECT posts.id, users.id as user_id, users.name, users.surname, posts.title, posts.campo 
+                            FROM posts 
+                            INNER JOIN users ON posts.user_id = users.id";
+                    $statement = $pdo->query($query);
+
+                    if ($statement->rowCount() > 0) {
+                        while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                            echo '<div class="post">';
+                            echo '<div class="post-header">';
+                            echo '<div class="author-info">';
+                            
+
+                            $profile_pic_extensions = ['.jpg', '.jpeg', '.png'];
+                            $profile_pic = false;
+                            foreach ($profile_pic_extensions as $ext) {
+                                $filename = $row['user_id'] . $ext;
+                                if (file_exists("../profileimages/" . $filename)) {
+                                    $profile_pic = $filename;
+                                    break;
+                                }
+                            }
+                            
+                            $profile_image = $profile_pic ? "../profileimages/$profile_pic" : "../images/default-profile-image.png";
+                            echo '<img src="' . htmlspecialchars($profile_image) . '" alt="' . htmlspecialchars($row['name']) . ' ' . htmlspecialchars($row['surname']) . '">';
+                            echo '<span>' . htmlspecialchars($row['name']) . ' ' . htmlspecialchars($row['surname']) . '</span>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '<div class="post-content">';
+                            echo '<h3>' . htmlspecialchars($row['title']) . '</h3>';
+                            echo '<div class="comment-box">';
+                            echo '<p>' . htmlspecialchars($row['campo']) . '</p>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '</div>';
+                        }
+                    }
+                    $pdo = null;
+                ?>
             </div>
 
 

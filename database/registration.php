@@ -63,5 +63,5 @@ if (isset($_POST['register'])) {
         }
     }
     
-    printf($msg, '<a href="../sign-up/sign-up.htm">Ritorno alla registrazione</a>');
+    printf($msg, '<a href="../sign-up/sign-up.php">Ritorno alla registrazione</a>');
 }

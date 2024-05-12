@@ -1,31 +1,30 @@
 <?php
-session_start();
+    session_start();
 
-$profile_image_folder = '../profileimages/';
-$session_id = $_SESSION['session_id'];
-$allowed_extensions = ['png', 'jpg', 'jpeg'];
-$profile_image_src = '';
-foreach ($allowed_extensions as $extension) {
-    $profile_image_path = $profile_image_folder . $session_id . '.' . $extension;
-    if (file_exists($profile_image_path)) {
-        $profile_image_src = $profile_image_path;
-        break;
+    $profile_image_folder = '../profileimages/';
+    $session_id = $_SESSION['session_id'];
+    $allowed_extensions = ['png', 'jpg', 'jpeg'];
+    $profile_image_src = '';
+    foreach ($allowed_extensions as $extension) {
+        $profile_image_path = $profile_image_folder . $session_id . '.' . $extension;
+        if (file_exists($profile_image_path)) {
+            $profile_image_src = $profile_image_path;
+            break;
+        }
     }
-}
 
-if (empty($profile_image_src)) {
-    $profile_image_src = '../images/default-profile-image.png';
-}
+    if (empty($profile_image_src)) {
+        $profile_image_src = '../images/default-profile-image.png';
+    }
 
-function checkAge($birthdate) {
-    $today = new DateTime();
-    $birthdate = new DateTime($birthdate); 
-    $age = $today->diff($birthdate)->y;
-    return $age; 
-}
+    function checkAge($birthdate) {
+        $today = new DateTime();
+        $birthdate = new DateTime($birthdate); 
+        $age = $today->diff($birthdate)->y;
+        return $age; 
+    }
 ?>
 
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -133,23 +132,96 @@ function checkAge($birthdate) {
             <p>Età: <?php echo checkAge($_SESSION['session_birthdate']) ?></script></p>
 
         </div>
+        
         <div class="posts">
             <h2>I Miei Post</h2>
-            <div class="post">
-                <h3>Titolo del Post 1</h3>
-                <p>Cerco qualcuno che mi coachi su lol, offro ben 23,67$</p>
-            </div>
-            <div class="post">
-                <h3>Titolo del Post 2</h3>
-                <p>Offro 28,39$ a chi mi aiuta a pulire il bagno di casa mia</p>
-            </div>
-            <div class="post">
-                <h3>Titolo del Post 3</h3>
-                <p>Per 50$ chi mi fa un decision tree</p>
-            </div>
+            <?php
+                require_once('../database/database.php');
+                                                
+                $query = "SELECT id, campo, title
+                        FROM posts 
+                        WHERE user_id = :id";
+                $check = $pdo->prepare($query);
+                            
+                $check->bindParam(':id', $_SESSION["session_id"], PDO::PARAM_INT);
+                $check->execute();
+
+                if ($check->rowCount() > 0) {
+                    while ($row = $check->fetch(PDO::FETCH_ASSOC)) {
+                        echo '<div class="post">';
+                            echo '<div class="post-header">';
+                                echo '<h3>' . htmlspecialchars($row['title']) . '</h3>';
+                                echo '<form id="formDelete' . $row['id'] . '" name="formDelete" action="delete.php" method="POST">';
+                                echo '<input type="hidden" name="post_id" value="' . $row['id'] . '">';
+                                echo '<button type="submit" class="delete-btn"><i class="bx bx-trash"></i>Delete</button>';
+                                echo '</form>';
+                            echo '</div>';
+                            echo '<div class="post-content">';
+                                echo '<p>' . htmlspecialchars($row['campo']) . '</p>';
+                            echo '</div>';
+                        echo '</div>';
+                    }
+                }
+                $pdo = null;
+            ?>
         </div>
     </div>
+
+    <div id="myModal" class="modal">
+    <div class="modal-content">
+        <p>Vuoi eliminare il post?</p>
+        <div>
+            <button id="btnYes">Si</button>
+            <button id="btnNo">No</button>
+        </div>
+    </div>
+    
 </section>
+</div>
+
+<script>
+    // Ottieni la finestra modale
+    var modal = document.getElementById("myModal");
+
+    // Ottieni i pulsanti per aprire e chiudere la finestra modale
+    var btnsOpenModal = document.querySelectorAll(".delete-btn");
+    var btnCloseModal = document.getElementById("btnNo");
+
+    // Quando un pulsante per aprire la finestra modale viene cliccato
+    btnsOpenModal.forEach(function(btn) {
+    btn.onclick = function(event) {
+        event.preventDefault(); // Impedisce il comportamento predefinito del pulsante
+        modal.style.display = "block";
+        var postId = this.parentNode.querySelector('input[name="post_id"]').value;
+        document.getElementById("btnYes").setAttribute("data-post-id", postId);
+    }
+    });
+
+    // Quando il pulsante "No" nella finestra modale viene cliccato, chiudi la finestra modale
+    btnCloseModal.onclick = function() {
+    modal.style.display = "none";
+    }
+
+    // Quando il pulsante "Si" nella finestra modale viene cliccato, esegui lo script PHP per eliminare il post
+    var btnYes = document.getElementById("btnYes");
+    btnYes.onclick = function() {
+    var postId = this.getAttribute("data-post-id");
+    // Invia una richiesta AJAX per eliminare il post
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "delete.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+        // Se il post è stato eliminato con successo, aggiorna la pagina o fai qualcos'altro se necessario
+        location.reload(); // Aggiorna la pagina
+        }
+    };
+    xhr.send("post_id=" + postId); // Invia l'ID del post da eliminare
+    modal.style.display = "none";
+    }
+
+</script>
+
 
 <script src="script.js"></script>
 

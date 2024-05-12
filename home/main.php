@@ -135,30 +135,13 @@
             </div>
 
             <div class="posts">
-                <!--
-                <div class="post">
-                    <div class="post-header">
-                        <div class="author-info">
-                            <img src="../images/default-profile-image.png" alt="Nome Autore">
-                            <span>Nome Autore</span>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <h3>Titolo del Post 1</h3>
-                        <div class="comment-box">
-                            <p>Cerco qualcuno che mi coachi su lol, offro ben 23,67$</p>
-                        </div>
-                    </div>
-                </div>
-                -->
-
-                
                 <?php
                     require_once('../database/database.php');
                     
                     $query = "SELECT posts.id, users.id as user_id, users.name, users.surname, posts.title, posts.campo 
                             FROM posts 
-                            INNER JOIN users ON posts.user_id = users.id";
+                            INNER JOIN users ON posts.user_id = users.id
+                            ORDER BY RAND();";
                     $statement = $pdo->query($query);
 
                     if ($statement->rowCount() > 0) {

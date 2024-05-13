@@ -147,32 +147,47 @@
                     if ($statement->rowCount() > 0) {
                         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                             echo '<div class="post">';
-                            echo '<div class="post-header">';
-                            echo '<div class="author-info">';
-                            
+                                echo '<div class="post-header">';
+                                    echo '<div class="author-info">';
 
-                            $profile_pic_extensions = ['.jpg', '.jpeg', '.png'];
-                            $profile_pic = false;
-                            foreach ($profile_pic_extensions as $ext) {
-                                $filename = $row['user_id'] . $ext;
-                                if (file_exists("../profileimages/" . $filename)) {
-                                    $profile_pic = $filename;
-                                    break;
-                                }
-                            }
-                            
-                            $profile_image = $profile_pic ? "../profileimages/$profile_pic" : "../images/default-profile-image.png";
-                            echo '<img src="' . htmlspecialchars($profile_image) . '" alt="' . htmlspecialchars($row['name']) . ' ' . htmlspecialchars($row['surname']) . '">';
-                            echo '<span>' . htmlspecialchars($row['name']) . ' ' . htmlspecialchars($row['surname']) . '</span>';
-                            echo '</div>';
-                            echo '</div>';
-                            echo '<div class="post-content">';
-                            echo '<h3>' . htmlspecialchars($row['title']) . '</h3>';
-                            echo '<div class="comment-box">';
-                            echo '<p>' . htmlspecialchars($row['campo']) . '</p>';
-                            echo '</div>';
-                            echo '</div>';
-                            echo '</div>';
+                                        $profile_pic_extensions = ['.jpg', '.jpeg', '.png'];
+                                        $profile_pic = false;
+                                        foreach ($profile_pic_extensions as $ext) {
+                                            $filename = $row['user_id'] . $ext;
+                                            if (file_exists("../profileimages/" . $filename)) {
+                                                $profile_pic = $filename;
+                                                break;
+                                            }
+                                        }
+
+                                        $profile_image = $profile_pic ? "../profileimages/$profile_pic" : "../images/default-profile-image.png";
+
+                                        
+                                        echo '<div class="profile-info">';
+                                            echo '<div class="profile-img">';
+                                                echo '<img src="' . htmlspecialchars($profile_image) . '" alt="' . htmlspecialchars($row['name'] . ' ' . $row['surname']) . '">';
+                                            echo '</div>'; // Chiusura div "profile-img"
+                                            echo '<div class="profile-details">';
+                                                echo '<span class="username">';
+                                                echo '<form id="visita' . $row['id'] . '" name="form" action="user_profile.php" method="POST">';
+                                                echo '<input type="hidden" name="other_user_id" value="' . $row['user_id'] . '">';
+                                                echo '<button type="submit" class="user-profile">' . htmlspecialchars($row['name'] . ' ' . $row['surname']) . '</button>';
+                                                echo '</form>';
+                                                echo '</span>';
+                                            echo '</div>'; // Chiusura div "profile-details"
+                                        echo '</div>';// Chiusura div "profile-info"
+
+                                    echo '</div>'; // Chiusura div "author-info"
+                                echo '</div>'; // Chiusura div "post-header"
+
+                                echo '<div class="post-content">';
+                                echo '<h3>' . htmlspecialchars($row['title']) . '</h3>';
+                                    echo '<div class="comment-box">';
+                                    echo '<p>' . htmlspecialchars($row['campo']) . '</p>';
+                                    echo '</div>'; // Chiusura div comment-box
+                                echo '</div>'; // Chiusura post-content
+
+                            echo '</div>'; // Chiusura div "post"
                         }
                     }
                     $pdo = null;

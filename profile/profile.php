@@ -183,7 +183,7 @@
         </div>
     </div>
 
-    <div id="editModal" class="modal edit-modal">
+    <div id="editModal" class="edit-modal">
         <div class="modal-content">
             <h2>Edit Post</h2>
             <form id="editForm" action="" method="POST">
@@ -202,6 +202,7 @@
 </div>
 
 <script>
+    /* ===== Inizio Finestra Modale Delete ===== */
     // Ottieni la finestra modale
     var modal = document.getElementById("myModal");
 
@@ -241,36 +242,35 @@
     xhr.send("post_id=" + postId); // Invia l'ID del post da eliminare
     modal.style.display = "none";
     }
+    /* ===== Inizio Finestra Modale Delete ===== */
+
 
 
     /* ===== Inizio Modale Edit  ===== */
-
     // Ottieni la finestra modale per la modifica del post
-var editModal = document.getElementById("editModal");
-// Ottieni il pulsante per chiudere la finestra modale di modifica
-var editModalClose = document.getElementById("editModalClose");
+    var editModal = document.getElementById("editModal");
+    // Ottieni il pulsante per chiudere la finestra modale di modifica
+    var editModalClose = document.getElementById("editModalClose");
 
-// Quando un pulsante di modifica viene cliccato
-var editBtns = document.querySelectorAll(".edit-btn");
-editBtns.forEach(function(btn) {
-    btn.onclick = function(event) {
-        event.preventDefault(); // Impedisce il comportamento predefinito del pulsante
-        // Ottieni l'ID del post da modificare
-        var postId = this.parentNode.querySelector('input[name="post_id"]').value;
-        // Imposta l'ID del post nel campo nascosto del form di modifica
-        document.getElementById("editPostId").value = postId;
-        // Apri la finestra modale di modifica
-        editModal.style.display = "block";
+    // Quando un pulsante di modifica viene cliccato
+    var editBtns = document.querySelectorAll(".edit-btn");
+    editBtns.forEach(function(btn) {
+        btn.onclick = function(event) {
+            event.preventDefault(); // Impedisce il comportamento predefinito del pulsante
+            // Ottieni l'ID del post da modificare
+            var postId = this.parentNode.querySelector('input[name="post_id"]').value;
+            // Imposta l'ID del post nel campo nascosto del form di modifica
+            document.getElementById("editPostId").value = postId;
+            // Apri la finestra modale di modifica
+            editModal.style.display = "block";
+        }
+    });
+
+    // Quando il pulsante di chiusura della finestra modale viene cliccato
+    editModalClose.onclick = function() {
+        // Chiudi la finestra modale di modifica
+        editModal.style.display = "none";
     }
-});
-
-// Quando il pulsante di chiusura della finestra modale viene cliccato
-editModalClose.onclick = function() {
-    // Chiudi la finestra modale di modifica
-    editModal.style.display = "none";
-}
-
-
     /* ===== Fine Modale Edit  ===== */
 
 </script>

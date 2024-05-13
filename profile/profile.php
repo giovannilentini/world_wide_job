@@ -131,7 +131,7 @@
             <p>Email: <?php echo $_SESSION['session_email'] ?></p>
             <p>Età: <?php echo checkAge($_SESSION['session_birthdate']) ?></script></p>
 
-        </div>
+        </div> <!-- Chiusura div "profile" -->
         
         <div class="posts">
             <h2>I Miei Post</h2>
@@ -150,31 +150,53 @@
                     while ($row = $check->fetch(PDO::FETCH_ASSOC)) {
                         echo '<div class="post">';
                             echo '<div class="post-header">';
-                                echo '<h3>' . htmlspecialchars($row['title']) . '</h3>';
-                                echo '<form id="formDelete' . $row['id'] . '" name="formDelete" action="delete.php" method="POST">';
-                                echo '<input type="hidden" name="post_id" value="' . $row['id'] . '">';
-                                echo '<button type="submit" class="delete-btn"><i class="bx bx-trash"></i>Delete</button>';
-                                echo '</form>';
-                            echo '</div>';
+                            echo '<h3>' . htmlspecialchars($row['title']) . '</h3>';
+                                echo '<div class="post-actions">';
+                                    echo '<form id="formEdit' . $row['id'] . '" name="formEdit" action="" method="POST">';
+                                    echo '<input type="hidden" name="post_id" value="' . $row['id'] . '">';
+                                    echo '<button type="submit" class="edit-btn"><i class="bx bx-edit"></i>Edit</button>';
+                                    echo '</form>';
+                                    echo '<form id="formDelete' . $row['id'] . '" name="formDelete" action="delete.php" method="POST">';
+                                    echo '<input type="hidden" name="post_id" value="' . $row['id'] . '">';
+                                    echo '<button type="submit" class="delete-btn"><i class="bx bx-trash"></i>Delete</button>';
+                                    echo '</form>';
+                                echo '</div>'; // Chiusura div "post-actions"
+                            echo '</div>'; // Chiusura div "post-header"               
                             echo '<div class="post-content">';
                                 echo '<p>' . htmlspecialchars($row['campo']) . '</p>';
                             echo '</div>';
-                        echo '</div>';
+                        echo '</div>'; //Chiusura div "post"
                     }
                 }
                 $pdo = null;
             ?>
+        </div> <!-- Chiusura div "posts" -->
+    </div> <!-- Chiusura div "container" -->
+
+    <div id="myModal" class="modal delete-modal">
+        <div class="modal-content">
+            <p>Vuoi eliminare il post?</p>
+            <div>
+                <button id="btnYes">Si</button>
+                <button id="btnNo">No</button>
+            </div>
         </div>
     </div>
 
-    <div id="myModal" class="modal">
-    <div class="modal-content">
-        <p>Vuoi eliminare il post?</p>
-        <div>
-            <button id="btnYes">Si</button>
-            <button id="btnNo">No</button>
+    <div id="editModal" class="modal edit-modal">
+        <div class="modal-content">
+            <h2>Edit Post</h2>
+            <form id="editForm" action="" method="POST">
+                <input type="text" id="editTitle" name="editTitle" placeholder="Inserisci titolo..." required>
+                <textarea class="textwin" id="editContent" name="editContent" rows="4" placeholder="Inserisci testo..." required></textarea>
+                <input type="hidden" id="editPostId" name="post_id">
+            </form> 
+            <button type="submit">Save</button>
+            <button id="editModalClose">Cancel</button>
         </div>
     </div>
+
+
     
 </section>
 </div>
@@ -219,6 +241,37 @@
     xhr.send("post_id=" + postId); // Invia l'ID del post da eliminare
     modal.style.display = "none";
     }
+
+
+    /* ===== Inizio Modale Edit  ===== */
+
+    // Ottieni la finestra modale per la modifica del post
+var editModal = document.getElementById("editModal");
+// Ottieni il pulsante per chiudere la finestra modale di modifica
+var editModalClose = document.getElementById("editModalClose");
+
+// Quando un pulsante di modifica viene cliccato
+var editBtns = document.querySelectorAll(".edit-btn");
+editBtns.forEach(function(btn) {
+    btn.onclick = function(event) {
+        event.preventDefault(); // Impedisce il comportamento predefinito del pulsante
+        // Ottieni l'ID del post da modificare
+        var postId = this.parentNode.querySelector('input[name="post_id"]').value;
+        // Imposta l'ID del post nel campo nascosto del form di modifica
+        document.getElementById("editPostId").value = postId;
+        // Apri la finestra modale di modifica
+        editModal.style.display = "block";
+    }
+});
+
+// Quando il pulsante di chiusura della finestra modale viene cliccato
+editModalClose.onclick = function() {
+    // Chiudi la finestra modale di modifica
+    editModal.style.display = "none";
+}
+
+
+    /* ===== Fine Modale Edit  ===== */
 
 </script>
 

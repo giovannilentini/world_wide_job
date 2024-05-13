@@ -309,11 +309,16 @@ body.dark .switch::before{
     max-width: 850px;
 }
 
-.home .post-header {
+.post-header {
     padding: 15px;
     border-bottom: 1px solid #ddd;
     display: flex;
-    justify-content: space-between; /* Per allineare il pulsante di eliminazione */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-actions {
+    display: flex;
     align-items: center;
 }
 
@@ -324,6 +329,8 @@ body.dark .switch::before{
 .home .post-content h3 {
     margin-top: 0;
 }
+
+/* ===== Inizio Bottone Delete =====*/
 
 .home .delete-btn {
     background-color: #f44336;
@@ -340,9 +347,32 @@ body.dark .switch::before{
     background-color: darkred;
 }
 
+/* ===== Fine Bottone Delete =====*/
+
+/* ===== Inizio Bottone Edit =====*/
+
+.edit-btn {
+    background-color: #695CFE;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px; /* Aggiungi spazio tra i pulsanti */
+}
+
+.edit-btn:hover {
+    background-color: #4D3EB6; /* Cambia colore al passaggio del mouse */
+}
+
+
+/* ===== Fine Bottone Edit =====*/
+
 /* ===== Inizio Finestra Modale Delete =====*/
 
-.modal {
+.delete-modal {
     display: none;
     position: fixed;
     z-index: 1000;
@@ -354,7 +384,7 @@ body.dark .switch::before{
     overflow: auto;
 }
   
-.modal-content {
+.delete-modal .modal-content {
     background-color: #fefefe;
     margin: 10% auto;
     padding: 20px;
@@ -369,8 +399,7 @@ body.dark .switch::before{
     align-items: center; 
 }
   
-  
-#btnYes {
+.delete-modal button {
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
@@ -379,30 +408,95 @@ body.dark .switch::before{
     border-radius: 4px;
     margin-right: 10px;
 }
-  
 
-#btnNo {
+.delete-modal button#btnNo {
     background-color: #f44336;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
 }
-  
-p {
+
+.delete-modal p {
     margin: 0;
     margin-bottom: 15px;
 }
-  
 
-/* ===== Fine Finestra Modale Delete=====*/
+/* ===== Fine Finestra Modale Delete =====*/
 
 
 
 /* ===== Inizio Finestra Modale Edit =====*/
 
+.edit-modal {
+    overflow: hidden;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.edit-modal .modal-content {
+    align-items: center;
+    text-align: center;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    height: 100%;;
+    max-width: 50%;
+    max-height: 65%;
+    overflow: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 8%;
+}
+
+.edit-modal .textwin {
+    width: calc(100% - 40px);
+    height: 40vh;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none;
+    box-sizing: border-box;
+}
+
+.edit-modal input[type="text"] {
+    width: calc(100% - 40px);
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none;
+    box-sizing: border-box;
+}
+  
+.edit-modal button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 10px;
+    margin: 0 5px;
+}
+
+.edit-modal button#editModalClose {
+    background-color: #f44336;
+    margin-left: 5px;
+}
+
+.edit-modal p {
+    margin: 0;
+    margin-bottom: 15px;
+}
+
 /* ===== Fine Finestra Modale Edit =====*/
+
 
 
 

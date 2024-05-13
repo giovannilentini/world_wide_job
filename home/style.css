@@ -306,6 +306,8 @@ body.dark .switch::before{
     object-fit: cover;
 }
 
+/* ===== Inizia Finestra Modale =====*/
+
 .modal {
     overflow: hidden;
     display: none;
@@ -382,6 +384,8 @@ input[type="text"]{
 #postBtn:hover {
     background-color: #1463c9;
 }
+
+/* ===== Fine Finestra Modale =====*/
 
 .posts {
     margin-top: 20px;

@@ -156,6 +156,9 @@
             <p>Email: <?php echo $email ?></p>
             <p>Età: <?php echo checkAge($bd) ?></script></p>
 
+            <button class="contact-btn">
+                <i class='bx bx-chat bx-sm'></i> <span> Contact Me <span>
+            </button>
         </div> <!-- Chiusura div "profile" -->
         
         <div class="posts">

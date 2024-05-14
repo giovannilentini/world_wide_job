@@ -13,6 +13,7 @@ function submitForm(event) {
     .then(response => response.text())
     .then(message => {
         if(message==='Successfully logged in, you will be automatically redirected to the login page within 3 seconds!'){
+            loginMessage.classList.remove('invalid');
             loginMessage.classList.add('valid');
             loginMessage.innerHTML = message; 
         setTimeout(function() {
@@ -21,6 +22,7 @@ function submitForm(event) {
         }
         else
         {
+            loginMessage.classList.remove('valid');
             loginMessage.classList.add('invalid');
             loginMessage.innerHTML = message; 
         }

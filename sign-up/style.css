@@ -150,16 +150,6 @@
     text-decoration: underline;
 }
 
-
-input[type="date"]::-webkit-datetime-edit-year-field:focus,
-input[type="date"]::-webkit-datetime-edit-month-field:focus,
-input[type="date"]::-webkit-datetime-edit-day-field:focus,
-input[type="date"]::-webkit-datetime-edit-text:focus {
-  color: transparent;
-  background: transparent;
-}
-
-
 @media screen and (max-width: 550px) {
     .wrapper {
         width: 90%;

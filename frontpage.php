@@ -51,7 +51,7 @@ if (isset($_SESSION['session_id'])) {
     
 
         <nav>
-            <img src="images/nuovologopiccolomanontroppo.png" class="logo" alt="WorldWideJob Logo">
+            <img src="images/Designer.png" class="logo" alt="WorldWideJob Logo">
            
         </nav>
 

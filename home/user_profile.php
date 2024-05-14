@@ -4,8 +4,6 @@
         header("refresh:0;url=../profile/profile.php");
     } else {
         $_SESSION['session_visit'] = $_POST['other_user_id'];
-
-
-    header("refresh:0;url=../other_user/profile.php");
+        header("refresh:0;url=../other_user/profile.php");
     }
 ?>

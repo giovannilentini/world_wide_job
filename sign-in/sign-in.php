@@ -14,9 +14,10 @@ if (isset($_SESSION['session_id'])) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>WorldWideJob Sign In</title>
 
-    <link rel="icon" href="../images/logo.png" type="image/icon type">
+    <link rel="icon" href="../images/nuovologopiccolo.png" type="image/icon type">
 
     <!-- ===== Boxicons ===== -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>

@@ -37,7 +37,7 @@
 }
 
 .content h1 {
-    font-size: 8vw; /* Utilizza una dimensione di carattere relativa alla larghezza della viewport */
+    font-size: 10vw; /* Utilizza una dimensione di carattere relativa alla larghezza della viewport */
     color: var(--text-color);
     font-weight: 600;
     transition: var(--tran-05);
@@ -55,7 +55,7 @@
     color: var(--text-color);
     font-size: 2vw; 
     border: 2px solid var(--text-color);
-    padding: 2vw 8vw; 
+    padding: 1.5vw 6vw; 
     border-radius: 50px;
     margin-top: 2vw;
     margin-right: 1vw; 

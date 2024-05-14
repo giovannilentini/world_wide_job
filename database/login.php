@@ -10,10 +10,6 @@ if (isset($_SESSION['session_id'])) {
 if (isset($_POST['login'])) {
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
-    
-    if (empty($email) || empty($password)) {
-        $msg = 'Inserisci email e password %s';
-    } else {
         $query = "
             SELECT *
             FROM users
@@ -27,7 +23,8 @@ if (isset($_POST['login'])) {
         $user = $check->fetch(PDO::FETCH_ASSOC);
         
         if (!$user || password_verify($password, $user['password']) === false) {
-            $msg = 'Credenziali utente errate %s'; 
+            $msg = 'Incorrect credentials, please try again'; 
+            echo $msg;
         } else {
             session_regenerate_id();
             $_SESSION['session_id'] = $user['id'];
@@ -36,12 +33,7 @@ if (isset($_POST['login'])) {
             $_SESSION['session_surname'] = $user['surname'];
             $_SESSION['session_birthdate'] = $user['birthdate'];
             $_SESSION['session_bio'] = $user['bio'];
-            $_SESSION['session_pw'] = $user['pw'];
-                        
-            header('Location: ../home/main.php');
-            exit;
+            $msg = 'Successfully logged in, you will be automatically redirected to the login page within 3 seconds!';   
+            echo $msg;
         }
     }
-    
-    printf($msg);
-}

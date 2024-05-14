@@ -25,16 +25,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <link rel="icon" href="../images/nuovologopiccolo.png" type="image/icon type">
-
-    <!-- ===== CSS ===== -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- ===== Boxicons ===== -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-
     <title>Home </title>
 
 </head>

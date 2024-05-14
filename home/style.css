@@ -14,6 +14,8 @@
     --primary-color-light: #F6F5FF;
     --toggle-color: #DDD;
     --text-color: #454545;
+    --postbutton-color: #c3c3c3;
+    --post-color: #eee;
 
     --tran-02: all 0.2s;
     --tran-03: all 0.3s;
@@ -256,12 +258,236 @@ body.dark .switch::before{
     transition: var(--tran-05);
 }
 
-.home .text{
-    font-size: 30px;
-    font-weight: 500;
-    color: var(--text-color);
-    padding: 8px 40px;
+.container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
 }
+
+.homepage {
+    flex: 2;
+    width: 60%;
+    background-color: var(--sidebar-color);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    align-items: center;
+    text-align: center;
+    display: inline-block;
+    gap: 16px;
+}
+
+/* ===== Inizio New Post Button ===== */
+.fb-btn {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--postbutton-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 450px 10px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.fb-btn:hover {
+    opacity: 0.5;
+}
+
+.fb-profile-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+/* ===== Fine New Post Button =====*/
+
+
+
+/* ===== Inizia Finestra Modale =====*/
+.modal {
+    overflow: hidden;
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+
+.modal-content {
+    align-items: center;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 8%;
+}
+
+.close-win {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-win:hover,
+.close-win:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+.textwin {
+    width: calc(100% - 40px);
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none;
+    box-sizing: border-box;
+}
+
+input[type="text"]{
+    width: calc(100% - 40px);
+    margin-top: 10px;
+    margin-left: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none;
+    box-sizing: border-box;
+}
+
+
+#postBtn {
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+#postBtn:hover {
+    background-color: #1463c9;
+}
+
+/* ===== Fine Finestra Modale =====*/
+
+.posts {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.post {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 850px;
+}
+
+.post-header {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+}
+
+.author-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.author-info span {
+    font-weight: bold;
+}
+
+/* ===== Inizio Posizione e Aspetto del Nome Utente =====*/
+.post-header .author-info button.user-profile {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    padding: 0;
+    order: -1;
+    margin-right: 10px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+}
+
+.profile-img {
+    margin-right: 10px;
+}
+
+.profile-details {
+    flex-grow: 1;
+}
+
+.user-profile {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    padding: 0;
+}
+
+/* ===== Fine Posizione e Aspetto del Nome Utente =====*/
+
+
+
+.post-content {
+    padding: 15px;
+}
+
+.post-content h3 {
+    margin-top: 0;
+}
+
+.comment-box {
+    padding: 15px;
+}
+
+.comment-box p {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .post {
+        width: 90%;
+    }
+}
+
 
 .sidebar.close ~ .home{
     left: 88px;

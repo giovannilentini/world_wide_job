@@ -140,52 +140,23 @@ session_start();
 
                     echo "<li class='chat'>";
 
-                    if ($profile_pic) {
-                        echo "<img src='../profileimages/$profile_pic' alt='' class='profile-picture' />";
-                    } else {
-                        echo "<img src='../images/default-profile-image.png' alt='' class='profile-picture' />";
+                        if ($profile_pic) {
+                            echo "<img src='../profileimages/$profile_pic' alt='' class='profile-picture' />";
+                        } else {
+                            echo "<img src='../images/default-profile-image.png' alt='' class='profile-picture' />";
+                        }
+                        echo "<div class='chat-info'>";
+                        echo "<span class='chat-name'>" . $row['name'] . ' ' . $row['surname'] . ": </span>";
+                        echo '<span class="chat-message">Hello there!</span>';
+                        echo "</div>";
+                        echo "</li>";
                     }
-                    echo "<div class='chat-info'>";
-                    echo "<span class='chat-name'>" . $row['name'] . ' ' . $row['surname'] . ": </span>";
-                    echo '<span class="chat-message">Hello there!</span>';
-                    echo "</div>";
-                    echo "</li>";
-                }
             } else {
                 echo "Nessun utente trovato nel database.";
             }
             ?>
 
         </ul>
-
-        <!--
-        <ul class="conversations">
-            <li class="chat">
-            <img src="../profileimages/1.jpeg" alt="" class="profile-picture" />
-                <div class="chat-info">
-                    <span class="chat-name">John Doe</span>
-                    <span class="chat-message">Hello therel</span>
-                </div>
-            </li>
-        
-            <li class="chat">
-                <span class="chat-online"></span>
-                <img src="../profileimages/1.jpeg" alt="" class="profile-picture" />
-                <div class="chat-info">
-                    <span class="chat-name">Jane Smith</span>
-                    <span class="chat-message">Hey! How are you? </span> 
-                </div>
-            </li>
-        
-            <li class="chat">
-                <img src="../profileimages/1.jpeg" alt="" class="profile-picture" />
-                <div class="chat-info">
-                    <span class="chat-name">Jack Fisher</span>
-                    <span class="chat-message">Hello there!</span>
-                </div>
-            </li>
-        </ul> 
-        -->
 
         </div>
     </div>

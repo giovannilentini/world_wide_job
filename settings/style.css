@@ -28,8 +28,17 @@ body{
     transition: var(--tran-04);
 }
 
-/* ===== Sidebar ===== */
-.sidebar {
+body.dark{
+    --body-color: #18191A;
+    --sidebar-color: #242526;
+    --primary-color: #3A3B3C;
+    --primary-color-light: #3A3B3C;
+    --toggle-color: #FFF;
+    --text-color: #CCC;
+}
+
+/* ~~~~~~~~~~ Sidebar ~~~~~~~~~~ */
+.sidebar{
     position: fixed;
     top: 0;
     left: 0;
@@ -42,10 +51,12 @@ body{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.sidebar.close {
+.sidebar.close{
     width: 88px;
 }
 
+
+/* ~~~~~~~~~~ Reusable CSS ~~~~~~~~~~ */
 .sidebar .text {
     font-size: 16px;
     font-weight: 500;
@@ -55,7 +66,7 @@ body{
     opacity: 1;
 }
 
-.sidebar.close .text {
+.sidebar.close .text{
     opacity: 0;
 }
 
@@ -66,7 +77,7 @@ body{
     justify-content: center;
 }
 
-.sidebar li {
+.sidebar li{
     height: 50px;
     margin-top: 10px;
     list-style: none;
@@ -74,7 +85,7 @@ body{
     align-items: center;
 }
 
-.sidebar li .icon {
+.sidebar li .icon{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -83,49 +94,49 @@ body{
 }
 
 .sidebar li .icon,
-.sidebar li .text {
+.sidebar li .text{
     color: var(--text-color);
     transition: var(--tran-02);
 }
 
-.sidebar header {
+.sidebar header{
     position: relative;
 }
 
-.sidebar .image-txt img {
+.sidebar .image-txt img{
     width: 40px;
     border-radius: 6px;
 }
 
-.sidebar header .image-text {
+.sidebar header .image-text{
     display: flex;
     align-items: center;
 }
 
-header .image-text .header-text {
+header .image-text .header-text{
     display: flex;
     flex-direction: column;
 }
 
-.header-text .name {
+.header-text .name{
     font-weight: 600;
 }
-
-.header-text .profession {
+.header-text .profession{
     margin-top: -2px;
 }
 
-.sidebar .menu {
+
+.sidebar .menu{
     margin-top: 35px;
 }
 
-.sidebar .search-box {
+.sidebar .search-box{
     background: var(--primary-color-light);
     border-radius: 6px;
     transition: var(--tran-05);
 }
 
-.search-box input {
+.search-box input{
     height: 100%;
     width: 100%;
     outline: none;
@@ -137,7 +148,7 @@ header .image-text .header-text {
     transition: var(--tran-05);
 }
 
-.sidebar li a {
+.sidebar li a{
     height: 100%;
     width: 100%;
     display: flex;
@@ -146,24 +157,81 @@ header .image-text .header-text {
     transition: var(--tran-04);
 }
 
-.sidebar li a:hover {
+.sidebar li a:hover{
     border: 6px;
     background: var(--primary-color);
 }
 
 .sidebar li a:hover .icon,
-.sidebar li a:hover .text {
+.sidebar li a:hover .text{
     color: var(--sidebar-color);
 }
 
-.sidebar .menu-bar {
+body.dark li a:hover .icon,
+body.dark li a:hover .text{
+    color: var(--text-color);
+}
+
+.sidebar .menu-bar{
     height: calc(100% - 50px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.switch::before {
+.menu-bar .mode{
+    position: relative;
+    border-radius: 6px;
+    background: var(--primary-color-light);
+}
+
+.menu-bar .mode .moon-sun{
+    height: 50px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.menu-bar .mode i{
+    position: absolute;
+    transition: var(--tran-03);
+}
+
+.menu-bar .mode i.sun{
+    opacity: 0;
+}
+
+body.dark .menu-bar .mode i.sun{
+    opacity: 1;
+}
+
+body.dark .menu-bar .mode i.moon{
+    opacity: 0;
+}
+
+.menu-bar .mode .toggle-switch{
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-width: 60px;
+    cursor: pointer;
+    border-radius: 6px;
+    background: var(--primary-color-light);
+    transition: var(--tran-05);
+}
+
+.toggle-switch .switch{
+    position: relative;
+    height: 22px;
+    width: 44px;
+    border-radius: 25px;
+    background: var(--toggle-color);
+}
+
+.switch::before{
     content: '';
     position: absolute;
     height: 15px;
@@ -176,19 +244,10 @@ header .image-text .header-text {
     transition: var(--tran-03);
 }
 
-.sidebar.close ~ .home {
-    left: 88px;
-    width: calc(100% - 88px);
+body .dark .switch::before{
+    left: 24px;
 }
 
-.sidebar.close .exitbutton {
-    display: none;
-}
-/* ===== Fine Sidebar ===== */
-
-
-
-/* ===== Inizio Section Home ===== */
 .home{
     position: relative;
     height: 100vh;
@@ -198,7 +257,7 @@ header .image-text .header-text {
     transition: var(--tran-05);
 }
 
-.container {
+.home .container {
     display: flex;
     position: relative;
     justify-content: center;
@@ -206,7 +265,7 @@ header .image-text .header-text {
     padding: 20px;
 }
 
-.settings {
+.home .settings {
     flex: 2;
     width: 60%;
     background-color: var(--sidebar-color);
@@ -220,6 +279,9 @@ header .image-text .header-text {
 }
 
 .pic {
+    /*
+    width: 200px;
+    height: 200px;*/
     width: 25vh;
     height: 25vh;
     border-radius: 50%;
@@ -253,9 +315,9 @@ header .image-text .header-text {
 
 .edit-box {
     position: absolute;
-    bottom: 4px;
-    left: -10%;
-    transform: translateX(-50%);
+    bottom: -25px;
+    left: 33%;
+    transform: translateX(0%);
     background-color: var(--box-color);
     border: 1.5px solid #4a4a4a;
     padding: 5px 10px;
@@ -278,6 +340,29 @@ header .image-text .header-text {
 .edit-box i {
     font-size: 16px;
     color: #333;
+}
+
+
+.sidebar.close ~ .home{
+    left: 88px;
+    width: calc(100% - 88px);
+}
+
+@media screen and (max-width: 500px) {
+    .sidebar.close ~ .home {
+        left: 0;
+        width: 100%;
+    }
+        .home{
+        position: absolute;
+        left: 0;
+        width: 100%;
+        transform: translateX(0);
+    }
+}
+
+.sidebar.close .exitbutton{
+    display: none;
 }
 
 .home h1 {
@@ -346,25 +431,23 @@ header .image-text .header-text {
 .sub:hover {
     filter: brightness(0.7);
 }
-/* ===== Fine Section Home ===== */
 
-
-
-/* ===== Mobile ===== */
 @media only screen and (min-width: 501px)
 {
-    .icon-mobile {
+    .icon-mobile{
         display: none;
         visibility: hidden;
     }
-
-    .exitbutton {
+    .exitbutton
+    {
         display: none;
     }
 }
-
-@media only screen and (max-width: 500px) {
-    .sidebar {
+/*
+----------Mobile------------
+ */
+ @media only screen and (max-width: 500px) {
+    .sidebar{
         width: 270px;
         opacity: 1;
         visibility: visible;
@@ -372,14 +455,15 @@ header .image-text .header-text {
         overflow: scroll;
     }
 
-    .sidebar.close {
+    .sidebar.close{
         width: 0px;
         opacity: 0;
         visibility: hidden;
     }
 
     .sidebar.close .icon,
-    .sidebar.close .image-text {
+    .sidebar.close .image-text
+    {
         opacity: 0;
         visibility: hidden;
     }
@@ -401,8 +485,7 @@ header .image-text .header-text {
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         z-index: 999;
     }
-
-    .exitbutton {
+    .exitbutton{
         color: var(--text-color);
         transition: var(--tran-03); 
         width: 30px;
@@ -412,26 +495,61 @@ header .image-text .header-text {
         background-color: transparent;
         font-size: 30px;
     }
-
     .pic {
-        width: 15vh;
-        height: 15vh;
+        width: 25vh;
+        height: 25vh;
     }
 
-    .uploadResult.errorResponse {
+    .uploadResult.errorResponse
+    {
         color:red;
     }
 
-    .sidebar.close ~ .home {
-        left: 0;
+    .info-box input {
         width: 100%;
+        padding: 8px;
+        border: 1px solid var(--toggle-color);
+        background-color: var(--sidebar-color);
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+        transition: border-color 0.3s;
     }
 
-    .home{
-        position: absolute;
-        left: 0;
+    .info-box textarea {
         width: 100%;
-        transform: translateX(0);
+        padding: 8px;
+        border: 1px solid var(--toggle-color);
+        background-color: var(--sidebar-color);
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+        transition: border-color 0.3s;
+    }
+
+    .title {
+        display: flex;
+        margin-top: 15px;
+        border-bottom: 1px solid var(--text-color); 
+        z-index: 2;
+        justify-content: center;
+     }
+
+     .edit-box {
+        position: absolute;
+        bottom: 4px;
+        left: 33%;
+        transform: translate(0%);
+        background-color: var(--box-color);
+        border: 1.5px solid #4a4a4a;
+        padding: 5px 10px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        opacity: 1;
+        transition: none;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
 }
-/* ===== Fine Mobile ===== */

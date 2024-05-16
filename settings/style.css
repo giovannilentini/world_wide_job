@@ -315,9 +315,9 @@ body .dark .switch::before{
 
 .edit-box {
     position: absolute;
-    bottom: -25px;
-    left: 33%;
-    transform: translateX(0%);
+    bottom: 4px;
+    left: -10%;
+    transform: translateX(-50%);
     background-color: var(--box-color);
     border: 1.5px solid #4a4a4a;
     padding: 5px 10px;
@@ -353,11 +353,12 @@ body .dark .switch::before{
         left: 0;
         width: 100%;
     }
-        .home{
+    .home{
         position: absolute;
         left: 0;
         width: 100%;
         transform: translateX(0);
+        z-index: -9999;
     }
 }
 
@@ -495,60 +496,12 @@ body .dark .switch::before{
         font-size: 30px;
     }
     .pic {
-        width: 25vh;
-        height: 25vh;
+        width: 15vh;
+        height: 15vh;
     }
 
     .uploadResult.errorResponse
     {
         color:red;
-    }
-
-    .info-box input {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid var(--toggle-color);
-        background-color: var(--sidebar-color);
-        border-radius: 5px;
-        box-sizing: border-box;
-        font-size: 16px;
-        transition: border-color 0.3s;
-    }
-
-    .info-box textarea {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid var(--toggle-color);
-        background-color: var(--sidebar-color);
-        border-radius: 5px;
-        box-sizing: border-box;
-        font-size: 16px;
-        transition: border-color 0.3s;
-    }
-
-    .title {
-        display: flex;
-        margin-top: 15px;
-        border-bottom: 1px solid var(--text-color); 
-        z-index: 2;
-        justify-content: center;
-     }
-
-     .edit-box {
-        position: absolute;
-        bottom: 4px;
-        left: 33%;
-        transform: translate(0%);
-        background-color: var(--box-color);
-        border: 1.5px solid #4a4a4a;
-        padding: 5px 10px;
-        border-radius: 5px;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        cursor: pointer;
-        opacity: 1;
-        transition: none;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
 }

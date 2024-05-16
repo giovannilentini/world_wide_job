@@ -504,6 +504,19 @@ body.dark .switch::before{
     left: 88px;
     width: calc(100% - 88px);
 }
+@media screen and (max-width: 500px) {
+    .sidebar.close ~ .home {
+        left: 0;
+        width: 100%;
+    }
+    .home{
+        position: absolute;
+        left: 0;
+        width: 100%;
+        transform: translateX(0);
+        z-index: -9999;
+    }
+}
 
 .sidebar.close .exitbutton{
     display: none;

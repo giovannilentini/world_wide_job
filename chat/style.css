@@ -257,15 +257,6 @@ body.dark .switch::before{
     transition: var(--tran-05);
 }
 
-.home{
-    position: relative;
-    height: 100vh;
-    left: 250px;
-    width: calc(100% - 250px);
-    background: var(--body-color);
-    transition: var(--tran-05);
-}
-
 .home .container {
     display: flex;
     position: relative;
@@ -339,6 +330,18 @@ body.dark .switch::before{
 .sidebar.close ~ .home{
     left: 88px;
     width: calc(100% - 88px);
+}
+
+@media screen and (max-width: 500px) {
+    .sidebar.close ~ .home {
+        left: 0;
+        width: 100%;
+    }
+    .home{
+        position: absolute;
+        left: 0;
+        width: 100%;
+    }
 }
 
 .sidebar.close .exitbutton{

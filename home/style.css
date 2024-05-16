@@ -262,16 +262,12 @@ body.dark .switch::before{
 }
 
 @media screen and (max-width: 500px) {
-    .home {
-        position: relative;
+    .home{
+        position: absolute;
         left: 0;
         width: 100%;
         transform: translateX(0);
-    }
-
-    .sidebar.close ~ .home {
-        left: 0;
-        width: calc(100% - 88px); /* Larghezza totale meno la larghezza della sidebar chiusa */
+        z-index: -9999;
     }
 }
 
@@ -525,7 +521,12 @@ input[type="text"]{
     left: 88px;
     width: calc(100% - 88px);
 }
-
+@media screen and (max-width: 500px) {
+    .sidebar.close ~ .home {
+        left: 0;
+        width: 100%;
+    }
+}
 .sidebar.close .exitbutton{
     display: none;
 }

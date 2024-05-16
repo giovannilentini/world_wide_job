@@ -27,7 +27,7 @@ body{
     transition: var(--tran-04);
 }
 
-/* ===== Sidebar ===== */
+
 .sidebar {
     position: fixed;
     top: 0;
@@ -49,7 +49,7 @@ body{
     font-size: 16px;
     font-weight: 500;
     color: var(--text-color);
-    transition: var(--tran-03);
+    transition: var(--tran-02);
     white-space: nowrap;
     opacity: 1;
 }

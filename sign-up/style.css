@@ -9,66 +9,41 @@
 
 :root {
     --text-color: #FFF;
+    --error-text-color: #800606;
 }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
-}
 
-.hero {
+.container {
     width: 100%;
     height: 100vh;
     position: relative;
-    overflow: hidden;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
-.message {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #ffffff;
-    border: 1px solid #cccccc;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    display: none;
-    z-index: 9999;
-}
+
 .back-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
+    z-index: -1;
 }
 
-nav{
+.logo-container {
+    width: 180px;
+}
+
+.logo {
     width: 100%;
-    height: 20vh;
-    position: absolute;
-    top: -10px;
-    left: 0;
-    padding: 20px 8%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-nav .logo{
-    position: fixed;
-    width: 16vh;
 }
 
 .wrapper {
     width: 420px;
+    overflow-y: visible;
     border: 3px solid rgba(255, 255, 255, .2);
     backdrop-filter: blur(20px);
     background-color: rgba(6, 34, 60, 0.51);
@@ -77,11 +52,7 @@ nav .logo{
     border-radius: 10px;
     padding: 30px 40px;
     z-index: 1;
-
-    position: absolute;
-    top: 58%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
 }
 
 .wrapper h1{
@@ -110,11 +81,6 @@ nav .logo{
     color: var(--text-color);
     padding: 20px 45px 20px 20px;
     z-index: 2;
-}
-
-
-.input-box input::placeholder{
-    color: var(--text-color);
 }
 
 .input-box i {
@@ -162,6 +128,12 @@ nav .logo{
     font-weight: 600;
 }
 
+.wrapper .btn:disabled {
+    background-color: #ccc; 
+    color: #999; 
+    cursor: not-allowed; 
+}
+
 .wrapper .login-link{
     font-size: 14.5px;
     text-align: center;
@@ -178,45 +150,47 @@ nav .logo{
     text-decoration: underline;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 550px) {
     .wrapper {
-        width: 60%;
-    }
-    nav .logo {
-        width: 20%;
+        width: 90%;
+
     }
 }
 
-@media screen and (max-width: 480px) {
-    .wrapper {
-        width: 80%;
-
-    }
-    nav .logo {
-        width: 20%;
-    }
+.input-box.valid input {
+    border: 2px solid green;
+    color: green;
 }
 
-@media screen and (max-height: 800px) {
-    nav .logo {
-        width: 12%;
-    }
+.input-box.valid i,
+.input-box.valid input::placeholder{
+    color: green;
 }
 
-@media screen and (max-height: 770px) {
-    nav .logo {
-        width: 10%;
-    }
+.input-box.invalid input {
+    border: 2px solid var(--error-text-color);
+    color: var(--error-text-color);
 }
 
-
-@media screen and (max-height: 667px) {
-    .wrapper {
-        margin-top: -14%;
-        height: 99%;
-        width: 80%;
-    }
-    nav .logo{
-        margin-top: -100%;
-    }
+.input-box.invalid i,
+.input-box.invalid input::placeholder{
+    color: var(--error-text-color);
 }
+
+.message {
+    font-size: 14px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+.message.message-login{
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 16px;
+    margin-left: 5px;
+}
+.message.invalid {
+    color: var(--error-text-color);
+    }
+.message.valid  {
+    color: green;
+    }

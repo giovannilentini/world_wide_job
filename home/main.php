@@ -124,7 +124,7 @@
             </button>
             <div id="myModal" class="modal">
                     <div class="modal-content">
-                    <form name="" action="newpost.php" method="POST">
+                    <form name="" action="methods/newpost.php" method="POST">
                         <span class="close-win">&times;</span>
                         <h2>Crea un Post</h2>
                         <input type="text" name="postTitle" placeholder="Titolo del post" required>
@@ -169,7 +169,7 @@
                                             echo '</div>'; // Chiusura div "profile-img"
                                             echo '<div class="profile-details">';
                                                 echo '<span class="username">';
-                                                echo '<form id="visita' . $row['id'] . '" name="form" action="user_profile.php" method="POST">';
+                                                echo '<form id="visita' . $row['id'] . '" name="form" action="methods/user_profile.php" method="POST">';
                                                 echo '<input type="hidden" name="other_user_id" value="' . $row['user_id'] . '">';
                                                 echo '<button type="submit" class="user-profile">' . htmlspecialchars($row['name'] . ' ' . $row['surname']) . '</button>';
                                                 echo '</form>';

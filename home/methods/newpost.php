@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-    require_once('../database/database.php');
+    require_once('../../database/database.php');
 
     if (!isset($_SESSION['session_id'])) {
         header("Location: login.php");
@@ -18,7 +18,7 @@
             $check->bindParam(':title', $_POST['postTitle'], PDO::PARAM_STR);
             $check->execute();
         
-            header("refresh:0;url=main.php");
+            header("refresh:0;url=../main.php");
         } catch (PDOException $e) {
             echo "Errore nell'esecuzione della query: " . $e->getMessage();
         }

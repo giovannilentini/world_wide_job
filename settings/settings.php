@@ -185,62 +185,6 @@
     </div>
 </section>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const profilePic = document.getElementById('profile-image');
-    profilePic.addEventListener('click', function() {
-        const fileInput = document.createElement('input');
-        fileInput.type = 'file';
-        fileInput.accept = 'image/*'; 
-        fileInput.addEventListener('change', function(event) {
-            const file = event.target.files[0]; 
-            const reader = new FileReader();
-            
-            reader.onload = function() {
-                profilePic.src = reader.result;
-            }
-            
-            if (file && file.type.startsWith('image/')) {
-                reader.readAsDataURL(file); 
-                uploadImage(file);
-            } else {
-                document.getElementById("uploadResult").style.color = "red";
-                document.getElementById("uploadResult").innerHTML="Estensione non consentita, scegliere un file JPEG o PNG.";
-            }
-        });
-        fileInput.click();
-    });
-});
-
-function uploadImage(imageFile) {
-    document.getElementById("uploadResult").style.color = "green";
-    var formData = new FormData();
-    formData.append("profileImage", imageFile);
-    
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "methods/upload_image.php", true);
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            if(xhr.responseText!="Immagine caricata con successo.")
-            {
-                document.getElementById("uploadResult").style.color = "red";
-            }
-            document.getElementById("uploadResult").innerHTML=xhr.responseText;
-        
-        } else {
-            document.getElementById("uploadResult").style.color = "red";
-            document.getElementById("uploadResult").innerHTML="Errore durante l'upload dell'immagine.";
-            
-        }
-    };
-    xhr.send(formData);
-}
-
-function getFileExtension(filename) {
-    return filename.split('.').pop().toLowerCase();
-}
-</script>
-
 <script src="script.js"></script>
 
 </body>

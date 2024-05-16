@@ -29,17 +29,8 @@ body{
     transition: var(--tran-04);
 }
 
-body.dark{
-    --body-color: #18191A;
-    --sidebar-color: #242526;
-    --primary-color: #3A3B3C;
-    --primary-color-light: #3A3B3C;
-    --toggle-color: #FFF;
-    --text-color: #CCC;
-}
-
 /* ===== Sidebar ===== */
-.sidebar{
+.sidebar {
     position: fixed;
     top: 0;
     left: 0;
@@ -50,17 +41,12 @@ body.dark{
     transition: var(--tran-05);
     z-index: 100;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    overflow-y: overlay;
 }
 
-.sidebar.close{
+.sidebar.close {
     width: 88px;
 }
-/* ===== Fine Sidebar ===== */
 
-
-
-/* ===== Reusable CSS ===== */
 .sidebar .text {
     font-size: 16px;
     font-weight: 500;
@@ -70,7 +56,7 @@ body.dark{
     opacity: 1;
 }
 
-.sidebar.close .text{
+.sidebar.close .text {
     opacity: 0;
 }
 
@@ -81,7 +67,7 @@ body.dark{
     justify-content: center;
 }
 
-.sidebar li{
+.sidebar li {
     height: 50px;
     margin-top: 10px;
     list-style: none;
@@ -89,7 +75,7 @@ body.dark{
     align-items: center;
 }
 
-.sidebar li .icon{
+.sidebar li .icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -98,49 +84,49 @@ body.dark{
 }
 
 .sidebar li .icon,
-.sidebar li .text{
+.sidebar li .text {
     color: var(--text-color);
     transition: var(--tran-02);
 }
 
-.sidebar header{
+.sidebar header {
     position: relative;
 }
 
-.sidebar .image-txt img{
+.sidebar .image-txt img {
     width: 40px;
     border-radius: 6px;
 }
 
-.sidebar header .image-text{
+.sidebar header .image-text {
     display: flex;
     align-items: center;
 }
 
-header .image-text .header-text{
+header .image-text .header-text {
     display: flex;
     flex-direction: column;
 }
 
-.header-text .name{
+.header-text .name {
     font-weight: 600;
 }
-.header-text .profession{
+
+.header-text .profession {
     margin-top: -2px;
 }
 
-
-.sidebar .menu{
+.sidebar .menu {
     margin-top: 35px;
 }
 
-.sidebar .search-box{
+.sidebar .search-box {
     background: var(--primary-color-light);
     border-radius: 6px;
     transition: var(--tran-05);
 }
 
-.search-box input{
+.search-box input {
     height: 100%;
     width: 100%;
     outline: none;
@@ -152,7 +138,7 @@ header .image-text .header-text{
     transition: var(--tran-05);
 }
 
-.sidebar li a{
+.sidebar li a {
     height: 100%;
     width: 100%;
     display: flex;
@@ -161,59 +147,46 @@ header .image-text .header-text{
     transition: var(--tran-04);
 }
 
-.sidebar li a:hover{
+.sidebar li a:hover {
     border: 6px;
     background: var(--primary-color);
 }
 
 .sidebar li a:hover .icon,
-.sidebar li a:hover .text{
+.sidebar li a:hover .text {
     color: var(--sidebar-color);
 }
 
-body.dark li a:hover .icon,
-body.dark li a:hover .text{
-    color: var(--text-color);
-}
-
-.sidebar .menu-bar{
+.sidebar .menu-bar {
     height: calc(100% - 50px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.menu-bar .mode{
+.menu-bar .mode {
     position: relative;
     border-radius: 6px;
     background: var(--primary-color-light);
 }
 
-.menu-bar .mode .moon-sun{
+.menu-bar .mode .moon-sun {
     height: 50px;
     width: 60px;
     display: flex;
     align-items: center;
 }
 
-.menu-bar .mode i{
+.menu-bar .mode i {
     position: absolute;
     transition: var(--tran-03);
 }
 
-.menu-bar .mode i.sun{
+.menu-bar .mode i.sun {
     opacity: 0;
 }
 
-body.dark .menu-bar .mode i.sun{
-    opacity: 1;
-}
-
-body.dark .menu-bar .mode i.moon{
-    opacity: 0;
-}
-
-.menu-bar .mode .toggle-switch{
+.menu-bar .mode .toggle-switch {
     position: absolute;
     right: 0;
     display: flex;
@@ -227,7 +200,7 @@ body.dark .menu-bar .mode i.moon{
     transition: var(--tran-05);
 }
 
-.toggle-switch .switch{
+.toggle-switch .switch {
     position: relative;
     height: 22px;
     width: 44px;
@@ -235,7 +208,7 @@ body.dark .menu-bar .mode i.moon{
     background: var(--toggle-color);
 }
 
-.switch::before{
+.switch::before {
     content: '';
     position: absolute;
     height: 15px;
@@ -248,10 +221,18 @@ body.dark .menu-bar .mode i.moon{
     transition: var(--tran-03);
 }
 
-body.dark .switch::before{
-    left: 24px;
+.sidebar.close ~ .home {
+    left: 88px;
+    width: calc(100% - 88px);
 }
 
+.sidebar.close .exitbutton {
+    display: none;
+}
+/* ===== Fine Sidebar ===== */
+
+
+/* ===== Inizio Section Home ===== */
 .home{
     position: relative;
     height: 100vh;
@@ -410,8 +391,6 @@ input[type="text"]{
 }
 /* ===== Fine Finestra Modale =====*/
 
-
-
 .posts {
     margin-top: 20px;
     display: flex;
@@ -448,8 +427,6 @@ input[type="text"]{
     font-weight: bold;
 }
 
-
-
 /* ===== Inizio Posizione e Aspetto del Nome Utente =====*/
 .post-header .author-info button.user-profile {
     background: transparent;
@@ -485,10 +462,7 @@ input[type="text"]{
     color: inherit;
     padding: 0;
 }
-
 /* ===== Fine Posizione e Aspetto del Nome Utente =====*/
-
-
 
 .post-content {
     padding: 15px;
@@ -505,23 +479,12 @@ input[type="text"]{
 .comment-box p {
     margin: 0;
 }
+/* ===== Fine Section Home ===== */
 
-.sidebar.close ~ .home{
-    left: 88px;
-    width: calc(100% - 88px);
-}
-@media screen and (max-width: 500px) {
-    .sidebar.close ~ .home {
-        left: 0;
-        width: 100%;
-    }
-}
-    .sidebar.close .exitbutton{
-        display: none;
-    }
 
-@media only screen and (min-width: 501px)
-{
+
+/* ===== Mobile===== */
+@media only screen and (min-width: 501px) {
     .icon-mobile{
         display: none;
         visibility: hidden;
@@ -532,10 +495,8 @@ input[type="text"]{
     }
 }
 
-/* ===== Mobile===== */
-
 @media only screen and (max-width: 500px) {
-    .sidebar{
+    .sidebar {
         width: 270px;
         opacity: 1;
         visibility: visible;
@@ -545,6 +506,7 @@ input[type="text"]{
 
     .sidebar.close {
         width: 0px;
+        opacity: 0;
         visibility: hidden;
     }
 
@@ -571,7 +533,7 @@ input[type="text"]{
         z-index: 999;
     }
 
-    .exitbutton{
+    .exitbutton {
         color: var(--text-color);
         transition: var(--tran-03); 
         width: 30px;
@@ -582,10 +544,15 @@ input[type="text"]{
         font-size: 30px;
     }
 
+    .sidebar.close ~ .home {
+        left: 0;
+        width: 100%;
+    }
+
     .home{
         position: absolute;
         left: 0;
         width: 100%;
-        transform: translateX(0);
     }
 }
+/* ===== Fine Mobile =====*/

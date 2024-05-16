@@ -201,67 +201,6 @@
 </section>
 </div>
 
-<script>
-    /* ===== Inizio Finestra Modale Delete ===== */
-    var modal = document.getElementById("myModal");
-
-    var btnsOpenModal = document.querySelectorAll(".delete-btn");
-    var btnCloseModal = document.getElementById("btnNo");
-
-    btnsOpenModal.forEach(function(btn) {
-    btn.onclick = function(event) {
-        event.preventDefault();
-        modal.style.display = "block";
-        var postId = this.parentNode.querySelector('input[name="post_id"]').value;
-        document.getElementById("btnYes").setAttribute("data-post-id", postId);
-    }
-    });
-
-    btnCloseModal.onclick = function() {
-    modal.style.display = "none";
-    }
-
-    var btnYes = document.getElementById("btnYes");
-    btnYes.onclick = function() {
-    var postId = this.getAttribute("data-post-id");
-    
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "delete.php", true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-        location.reload();
-        }
-    };
-    xhr.send("post_id=" + postId);
-    modal.style.display = "none";
-    }
-    /* ===== Inizio Finestra Modale Delete ===== */
-
-
-
-    /* ===== Inizio Modale Edit  ===== */
-    var editModal = document.getElementById("editModal");
-    var editModalClose = document.getElementById("editModalClose");
-
-    var editBtns = document.querySelectorAll(".edit-btn");
-    editBtns.forEach(function(btn) {
-        btn.onclick = function(event) {
-            event.preventDefault();
-            var postId = this.parentNode.querySelector('input[name="post_id"]').value;
-            document.getElementById("editPostId").value = postId;
-            editModal.style.display = "block";
-        }
-    });
-
-    editModalClose.onclick = function() {
-        editModal.style.display = "none";
-    }
-    /* ===== Fine Modale Edit  ===== */
-
-</script>
-
-
 <script src="script.js"></script>
 
 </body>

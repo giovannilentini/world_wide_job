@@ -186,31 +186,33 @@
 </section>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const profilePic = document.getElementById('profile-image');
-    profilePic.addEventListener('click', function() {
-        const fileInput = document.createElement('input');
-        fileInput.type = 'file';
-        fileInput.accept = 'image/*'; 
-        fileInput.addEventListener('change', function(event) {
-            const file = event.target.files[0]; 
-            const reader = new FileReader();
-            
-            reader.onload = function() {
-                profilePic.src = reader.result;
-            }
-            
-            if (file && file.type.startsWith('image/')) {
-                reader.readAsDataURL(file); 
-                uploadImage(file);
-            } else {
-                document.getElementById("uploadResult").style.color = "red";
-                document.getElementById("uploadResult").innerHTML="Estensione non consentita, scegliere un file JPEG o PNG.";
-            }
+    document.addEventListener('DOMContentLoaded', function() {
+        const editBox = document.getElementById('edit-box');
+        const profilePic = document.getElementById('profile-image');
+
+        editBox.addEventListener('click', function() {
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'image/*'; 
+            fileInput.addEventListener('change', function(event) {
+                const file = event.target.files[0]; 
+                const reader = new FileReader();
+                
+                reader.onload = function() {
+                    profilePic.src = reader.result;
+                }
+                
+                if (file && file.type.startsWith('image/')) {
+                    reader.readAsDataURL(file); 
+                    uploadImage(file);
+                } else {
+                    document.getElementById("uploadResult").style.color = "red";
+                    document.getElementById("uploadResult").innerHTML="Estensione non consentita, scegliere un file JPEG o PNG.";
+                }
+            });
+            fileInput.click();
         });
-        fileInput.click();
     });
-});
 
 function uploadImage(imageFile) {
     document.getElementById("uploadResult").style.color = "green";

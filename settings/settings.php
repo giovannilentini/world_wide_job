@@ -98,18 +98,6 @@
                     <span class="text vav-text">Logout</span>
                 </a>
             </li>
-
-            <li class="mode">
-                <div class="moon-sun">
-                    <i class="bx bx-moon icon moon"></i>
-                    <i class="bx bx-sun icon sun"></i>
-                </div>
-                <span class="mode-text text">Dark Mode</span>
-
-                <div class="toggle-switch">
-                    <span class="switch"></span>
-                </div>
-            </li>
         </div>
 
     </div>

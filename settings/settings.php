@@ -135,7 +135,7 @@
                    <h2>Personal Information</h2> 
                 </div>
                 
-                <form name="" action="upload_personal.php" method="POST">
+                <form name="" action="methods/upload_personal.php" method="POST">
                     <div class="info-box">
                         <label for="nome">Nome</label>
                         <input class="input-text" type="text" id="nome" name="nome" placeholder="inserire qui il tuo nome...">
@@ -157,7 +157,7 @@
                     <h2>Profile Information</h2> 
                 </div>
 
-                <form name="" action="upload_profile.php" method="POST">
+                <form name="" action="methods/upload_profile.php" method="POST">
                     <div class="info-box">
                         <label for="email">E-mail:</label>
                         <input type="text" id="email" name="email" placeholder="inserire qui la tua mail...">
@@ -218,7 +218,7 @@ function uploadImage(imageFile) {
     formData.append("profileImage", imageFile);
     
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "upload_image.php", true);
+    xhr.open("POST", "methods/upload_image.php", true);
     xhr.onload = function() {
         if (xhr.status === 200) {
             if(xhr.responseText!="Immagine caricata con successo.")

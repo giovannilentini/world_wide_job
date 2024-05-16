@@ -24,9 +24,9 @@
         
         if (empty($errors) == true) {
             $session_id = $_SESSION['session_id'];
-            $profile_image_folder = '../profileimages/';
+            $profile_image_folder = '../../profileimages/';
             $newFileName = $session_id . "." . $file_ext;
-            $uploadPath = "../profileimages/" . $newFileName;
+            $uploadPath = "../../profileimages/" . $newFileName;
             foreach ($extensions as $ext) {
                 $profile_image_path = $profile_image_folder . $session_id . '.' . $ext;
                 if (file_exists($profile_image_path)) {

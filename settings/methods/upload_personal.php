@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once('../database/database.php');
+    require_once('../../database/database.php');
 
     if (!isset($_SESSION['session_id'])) {
         header("Location: login.php");
@@ -40,7 +40,7 @@
             $_SESSION['session_bio'] = $_POST['bio'];
         }
 
-        header("refresh:0;url=../settings/settings.php");
+        header("refresh:0;url=../../settings/settings.php");
     }
 
 ?>

@@ -376,17 +376,14 @@ header .image-text .header-text {
     background-color: rgba(0,0,0,0.5);
 }
 
-.edit-modal .modal-content {
+.modal-content {
     align-items: center;
     text-align: center;
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
-    height: 100%;;
-    max-width: 50%;
-    max-height: 65%;
+    width: 50%;
     overflow: auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -474,19 +471,20 @@ header .image-text .header-text {
     }
 
     .icon-mobile {
-        color: var(--primary-color);
+        background-color: var(--primary-color);
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 39px;
-        height: 39px;
+        width: 42px;
+        height: 42px;
         border: 3px solid var(--primary-color);
-        border-radius: 50%;
-        background-color: transparent;
+        color: white;
+        border-radius: 10px;
         position: fixed;
         margin: 15px;
         font-size: 32px;
         transition: var(--tran-03); 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         z-index: 999;
     }
 
@@ -511,6 +509,11 @@ header .image-text .header-text {
         left: 0;
         width: 100%;
         transform: translateX(0);
+    }
+
+    .modal-content {
+        width: 80%;
+        margin-top: 25%;
     }
 }
 

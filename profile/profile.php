@@ -115,16 +115,16 @@
     <div class="container">
         <div class="profile">
             <img src="<?php echo $profile_image_src?>" alt="Immagine Profilo" id="profile-image">
-            <h2>Dati del Profilo</h2>
-            <p>Biografia: <?php echo $_SESSION['session_bio'] ?></p>
-            <p>Nome: <?php echo $_SESSION['session_name'] . ' ' . $_SESSION['session_surname'] ?></p>
+            <h2>Profile Data</h2>
+            <p>Biography: <?php echo $_SESSION['session_bio'] ?></p>
+            <p>Name: <?php echo $_SESSION['session_name'] . ' ' . $_SESSION['session_surname'] ?></p>
             <p>Email: <?php echo $_SESSION['session_email'] ?></p>
-            <p>Età: <?php echo checkAge($_SESSION['session_birthdate']) ?></script></p>
+            <p>Age: <?php echo checkAge($_SESSION['session_birthdate']) ?></script></p>
 
         </div> <!-- Chiusura div "profile" -->
         
         <div class="posts">
-            <h2>I Miei Post</h2>
+            <h2>My Posts</h2>
             <?php
                 require_once('../database/database.php');
                                                 
@@ -150,24 +150,24 @@
                                     echo '<input type="hidden" name="post_id" value="' . $row['id'] . '">';
                                     echo '<button type="submit" class="delete-btn"><i class="bx bx-trash"></i>Delete</button>';
                                     echo '</form>';
-                                echo '</div>'; // Chiusura div "post-actions"
-                            echo '</div>'; // Chiusura div "post-header"               
+                                echo '</div>'; 
+                            echo '</div>';         
                             echo '<div class="post-content">';
                                 echo '<p>' . htmlspecialchars($row['campo']) . '</p>';
                             echo '</div>';
-                        echo '</div>'; //Chiusura div "post"
+                        echo '</div>';
                     }
                 }
                 $pdo = null;
             ?>
-        </div> <!-- Chiusura div "posts" -->
-    </div> <!-- Chiusura div "container" -->
+        </div>
+    </div> 
 
     <div id="myModal" class="modal delete-modal">
         <div class="modal-content">
-            <p>Vuoi eliminare il post?</p>
+            <p>Do you want to delete the post?</p>
             <div>
-                <button id="btnYes">Si</button>
+                <button id="btnYes">Yes</button>
                 <button id="btnNo">No</button>
             </div>
         </div>
@@ -177,8 +177,8 @@
         <div class="modal-content">
             <h2>Edit Post</h2>
             <form id="editForm" action="" method="POST">
-                <input type="text" id="editTitle" name="editTitle" placeholder="Inserisci titolo..." required>
-                <textarea class="textwin" id="editContent" name="editContent" rows="4" placeholder="Inserisci testo..." required></textarea>
+                <input type="text" id="editTitle" name="editTitle" placeholder="Enter title..." required>
+                <textarea class="textwin" id="editContent" name="editContent" rows="4" placeholder="Insert text..." required></textarea>
                 <input type="hidden" id="editPostId" name="post_id">
             </form> 
             <button type="submit">Save</button>

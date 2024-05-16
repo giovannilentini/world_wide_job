@@ -110,15 +110,15 @@
         <div class="homepage">
             <button id="openModalBtn" class="fb-btn">
             <img class="fb-profile-img" src="<?php echo $profile_image_src?>" alt="Profilo">
-            <span>Vuoi creare un nuovo post? </span>
+            <span>Do you want to create a new post?</span>
             </button>
             <div id="myModal" class="modal">
                     <div class="modal-content">
                     <form name="" action="methods/newpost.php" method="POST">
                         <span class="close-win">&times;</span>
-                        <h2>Crea un Post</h2>
-                        <input type="text" name="postTitle" placeholder="Titolo del post" required>
-                        <textarea class="textwin" name="postContent" rows="16" placeholder="Scrivi qualcosa..."required></textarea>
+                        <h2>Create a Post</h2>
+                        <input type="text" name="postTitle" placeholder="Post title" required>
+                        <textarea class="textwin" name="postContent" rows="16" placeholder="Write something down..."required></textarea>
                         <button id="postBtn">Post</button>
                     </form>
                     </div>
@@ -156,7 +156,7 @@
                                         echo '<div class="profile-info">';
                                             echo '<div class="profile-img">';
                                                 echo '<img src="' . htmlspecialchars($profile_image) . '" alt="' . htmlspecialchars($row['name'] . ' ' . $row['surname']) . '">';
-                                            echo '</div>'; // Chiusura div "profile-img"
+                                            echo '</div>'; 
                                             echo '<div class="profile-details">';
                                                 echo '<span class="username">';
                                                 echo '<form id="visita' . $row['id'] . '" name="form" action="methods/user_profile.php" method="POST">';
@@ -164,20 +164,20 @@
                                                 echo '<button type="submit" class="user-profile">' . htmlspecialchars($row['name'] . ' ' . $row['surname']) . '</button>';
                                                 echo '</form>';
                                                 echo '</span>';
-                                            echo '</div>'; // Chiusura div "profile-details"
-                                        echo '</div>';// Chiusura div "profile-info"
+                                            echo '</div>'; 
+                                        echo '</div>';
 
-                                    echo '</div>'; // Chiusura div "author-info"
-                                echo '</div>'; // Chiusura div "post-header"
+                                    echo '</div>';
+                                echo '</div>'; 
 
                                 echo '<div class="post-content">';
                                 echo '<h3>' . htmlspecialchars($row['title']) . '</h3>';
                                     echo '<div class="comment-box">';
                                     echo '<p>' . htmlspecialchars($row['campo']) . '</p>';
-                                    echo '</div>'; // Chiusura div comment-box
-                                echo '</div>'; // Chiusura post-content
+                                    echo '</div>'; 
+                                echo '</div>';
 
-                            echo '</div>'; // Chiusura div "post"
+                            echo '</div>';
                         }
                     }
                     $pdo = null;

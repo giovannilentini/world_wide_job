@@ -46,7 +46,6 @@ function checkAge(tempdate) {
     return age;
 }
 
-/* ===== Inizio Finestra Modale Delete ===== */
 var modal = document.getElementById("myModal");
 
 var btnsOpenModal = document.querySelectorAll(".delete-btn");
@@ -80,11 +79,7 @@ xhr.onreadystatechange = function() {
 xhr.send("post_id=" + postId);
 modal.style.display = "none";
 }
-/* ===== Inizio Finestra Modale Delete ===== */
 
-
-
-/* ===== Inizio Modale Edit  ===== */
 var editModal = document.getElementById("editModal");
 var editModalClose = document.getElementById("editModalClose");
 
@@ -101,4 +96,3 @@ editBtns.forEach(function(btn) {
 editModalClose.onclick = function() {
     editModal.style.display = "none";
 }
-/* ===== Fine Modale Edit  ===== */

@@ -12,10 +12,8 @@
 
     <link rel="icon" href="../images/nuovologopiccolo.png" type="image/icon type">
 
-    <!-- ===== CSS ===== -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- ===== Boxicons ===== -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <link
@@ -140,7 +138,7 @@
                         echo "</li>";
                     }
             } else {
-                echo "Nessun utente trovato nel database.";
+                echo "No users found in the database.";
             }
             ?>
 

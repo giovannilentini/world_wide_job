@@ -27,7 +27,6 @@ body{
     transition: var(--tran-04);
 }
 
-/* ===== Sidebar ===== */
 .sidebar {
     position: fixed;
     top: 0;
@@ -183,11 +182,7 @@ header .image-text .header-text {
 .sidebar.close .exitbutton {
     display: none;
 }
-/* ===== Fine Sidebar ===== */
 
-
-
-/* ===== Inizio Section Home =====*/
 .home{
     position: relative;
     height: 100vh;
@@ -270,8 +265,6 @@ header .image-text .header-text {
 }
 
 
-
-/* ===== Inizio Bottone Delete =====*/
 .home .delete-btn {
     background-color: #f44336;
     color: white;
@@ -287,11 +280,7 @@ header .image-text .header-text {
 .home .delete-btn:hover {
     background-color: darkred;
 }
-/* ===== Fine Bottone Delete =====*/
 
-
-
-/* ===== Inizio Bottone Edit =====*/
 .edit-btn {
     background-color: #695CFE;
     color: #FFF;
@@ -308,11 +297,7 @@ header .image-text .header-text {
 .edit-btn:hover {
     background-color: #4D3EB6;
 }
-/* ===== Fine Bottone Edit =====*/
 
-
-
-/* ===== Inizio Finestra Modale Delete =====*/
 .delete-modal {
     display: none;
     position: fixed;
@@ -358,11 +343,7 @@ header .image-text .header-text {
     margin: 0;
     margin-bottom: 15px;
 }
-/* ===== Fine Finestra Modale Delete =====*/
 
-
-
-/* ===== Inizio Finestra Modale Edit =====*/
 
 .edit-modal {
     overflow: hidden;
@@ -431,13 +412,7 @@ header .image-text .header-text {
     margin: 0;
     margin-bottom: 15px;
 }
-/* ===== Fine Finestra Modale Edit =====*/
 
-/* ===== Inizio Section Home =====*/
-
-
-
-/* ===== Mobile===== */
 @media only screen and (min-width: 501px) {
     .icon-mobile{
         display: none;
@@ -535,4 +510,3 @@ header .image-text .header-text {
     }
 
 }
-/* ===== Fine Mobile =====*/

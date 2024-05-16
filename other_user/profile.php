@@ -60,10 +60,9 @@
 
     <link rel="icon" href="../images/nuovologopiccolo.png" type="image/icon type">
 
-    <!-- ===== CSS ===== -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- ===== Boxicons ===== -->
+
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <title>Personal Profile</title>
@@ -138,19 +137,19 @@
     <div class="container">
         <div class="profile">
             <img src="<?php echo $profile_image_src ?>" alt="Immagine Profilo" id="profile-image">
-            <h2>Dati del Profilo</h2>
-            <p>Biografia: <?php echo $bio ?></p>
-            <p>Nome: <?php echo $name . ' ' . $surname ?></p>
+            <h2>Profile Data</h2>
+            <p>Biography: <?php echo $bio ?></p>
+            <p>Name: <?php echo $name . ' ' . $surname ?></p>
             <p>Email: <?php echo $email ?></p>
-            <p>Età: <?php echo checkAge($bd) ?></script></p>
+            <p>Age: <?php echo checkAge($bd) ?></script></p>
 
             <button class="contact-btn">
                 <i class='bx bx-chat bx-sm'></i> <span> Contact Me <span>
             </button>
-        </div> <!-- Chiusura div "profile" -->
+        </div> 
         
         <div class="posts">
-            <h2>Tutti i post di <?php echo $name . ' ' . $surname ?></h2>
+            <h2>All posts of <?php echo $name . ' ' . $surname ?></h2>
             <?php
                 require_once('../database/database.php');
                                                 
@@ -167,17 +166,17 @@
                         echo '<div class="post">';
                             echo '<div class="post-header">';
                                 echo '<h3>' . htmlspecialchars($row['title']) . '</h3>';
-                            echo '</div>'; // Chiusura div "post-header"               
+                            echo '</div>';              
                             echo '<div class="post-content">';
                                 echo '<p>' . htmlspecialchars($row['campo']) . '</p>';
-                            echo '</div>'; // Chiusura div "post-content"
-                        echo '</div>'; //Chiusura div "post"
+                            echo '</div>';
+                        echo '</div>';
                     }
                 }
                 $pdo = null;
             ?>
-        </div> <!-- Chiusura div "posts" -->
-    </div> <!-- Chiusura div "container" -->
+        </div> 
+    </div> 
 
     
 </section>

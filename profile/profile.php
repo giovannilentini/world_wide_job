@@ -116,12 +116,7 @@
             <p>Name: <?php echo $_SESSION['session_name'] . ' ' . $_SESSION['session_surname'] ?></p>
             <p>Email: <?php echo $_SESSION['session_email'] ?></p>
             <p>Age: <?php echo checkAge($_SESSION['session_birthdate']) ?></script></p>
-<<<<<<< HEAD
-
-        </div> <!-- Chiusura div "profile" -->
-=======
         </div>
->>>>>>> giovanni
         
         <div class="posts">
             <h2>My Posts</h2>

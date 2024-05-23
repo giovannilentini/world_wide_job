@@ -117,9 +117,6 @@ header .image-text .header-text {
     margin-top: 35px;
 }
 
-<<<<<<< HEAD
-
-=======
 .sidebar .search-box {
     background: var(--primary-color-light);
     border-radius: 6px;
@@ -138,7 +135,6 @@ header .image-text .header-text {
     transition: var(--tran-05);
 }
 
->>>>>>> giovanni
 .sidebar li a {
     height: 100%;
     width: 100%;
@@ -497,38 +493,20 @@ header .image-text .header-text {
     }
 }
 
-<<<<<<< HEAD
-@media screen and (max-width: 830px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-        display: grid;
-=======
 @media screen and (max-width: 1000px) {
     .container {
         flex-direction: column;
         align-items: center;
         justify-content: normal;
->>>>>>> giovanni
         gap: 20px;
     }
 
     .profile {
-<<<<<<< HEAD
-        max-width: 100%;
-=======
         width: 100%;
->>>>>>> giovanni
         margin-right: 0px;
     }
 
     .posts {
-<<<<<<< HEAD
-        max-width: 100%;
-    }
-
-=======
         width: 100%;
     }
->>>>>>> giovanni
 }

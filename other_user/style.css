@@ -27,10 +27,6 @@ body{
     transition: var(--tran-04);
 }
 
-<<<<<<< HEAD
-/* ===== Sidebar ===== */
-=======
->>>>>>> giovanni
 .sidebar {
     position: fixed;
     top: 0;
@@ -121,9 +117,6 @@ header .image-text .header-text {
     margin-top: 35px;
 }
 
-<<<<<<< HEAD
-
-=======
 .sidebar .search-box {
     background: var(--primary-color-light);
     border-radius: 6px;
@@ -142,7 +135,6 @@ header .image-text .header-text {
     transition: var(--tran-05);
 }
 
->>>>>>> giovanni
 .sidebar li a {
     height: 100%;
     width: 100%;
@@ -185,23 +177,12 @@ header .image-text .header-text {
 .sidebar.close ~ .home {
     left: 88px;
     width: calc(100% - 88px);
-<<<<<<< HEAD
-=======
-}
-
-.sidebar.close .exitbutton {
-    display: none;
->>>>>>> giovanni
 }
 
 .sidebar.close .exitbutton {
     display: none;
 }
-/* ===== Fine Sidebar ===== */
 
-
-
-/* ===== Inizio Section Home =====*/
 .home{
     position: relative;
     height: 100vh;
@@ -276,11 +257,11 @@ header .image-text .header-text {
     align-items: center;
 }
 
-.post-content {
+.home .post-content {
     padding: 15px;
 }
 
-.post-content h3 {
+.home .post-content h3 {
     margin-top: 0;
 }
 
@@ -542,71 +523,6 @@ header .image-text .header-text {
 /* ===== Fine Bottone Contact Me ===== */
 
 
-<<<<<<< HEAD
-/* ===== Fine Section Home =====*/
-
-
-/* ===== Mobile===== */
-@media only screen and (min-width: 501px) {
-    .icon-mobile{
-        display: none;
-        visibility: hidden;
-    }
-    .exitbutton
-    {
-        display: none;
-    }
-}
-
-@media only screen and (max-width: 500px) {
-    .sidebar {
-        width: 270px;
-        opacity: 1;
-        visibility: visible;
-        z-index: 1000;
-        overflow: scroll;
-    }
-
-    .sidebar.close {
-        width: 0px;
-        opacity: 0;
-        visibility: hidden;
-    }
-
-    .sidebar.close .icon,
-    .sidebar.close .image-text{
-        opacity: 0;
-        visibility: hidden;
-    }
-
-    .icon-mobile {
-        background-color: var(--primary-color);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 42px;
-        height: 42px;
-        border: 3px solid var(--primary-color);
-        color: white;
-        border-radius: 10px;
-        position: fixed;
-        margin: 15px;
-        font-size: 32px;
-        transition: var(--tran-03); 
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        z-index: 999;
-    }
-
-    .exitbutton {
-        color: var(--text-color);
-        transition: var(--tran-03); 
-        width: 30px;
-        height: 30px;
-        margin: 15px;
-        display: flex;
-        background-color: transparent;
-        font-size: 30px;
-=======
 @media screen and (max-width: 1000px) {
     .container {
         flex-direction: column;
@@ -622,38 +538,5 @@ header .image-text .header-text {
 
     .posts {
         width: 100%;
->>>>>>> giovanni
-    }
-
-    .sidebar.close ~ .home {
-        left: 0;
-        width: 100%;
-    }
-
-    .home {
-        position: absolute;
-        left: 0;
-        width: 100%;
-        transform: translateX(0);
     }
 }
-
-@media screen and (max-width: 830px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-        display: grid;
-        gap: 20px;
-    }
-
-    .profile {
-        max-width: 100%;
-        margin-right: 0px;
-    }
-
-    .posts {
-        max-width: 100%;
-    }
-
-}
-/* ===== Fine Mobile =====*/

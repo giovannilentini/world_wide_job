@@ -1,10 +1,10 @@
 <?php
-session_start();
+    session_start();
 
-if (isset($_SESSION['session_id'])) {
-    header('Location: ../home/main.php');
-    exit;
-}
+    if (isset($_SESSION['session_id'])) {
+        header('Location: ../home/main.php');
+        exit;
+    }
 ?>
 
 <!doctype html>

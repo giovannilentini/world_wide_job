@@ -1,21 +1,21 @@
 <?php
-session_start();
-require_once('database.php');
+    session_start();
+    require_once('database.php');
 
-if (isset($_SESSION['session_id'])) {
-    header('Location: ../home/main.php');
-    exit;
-}
+    if (isset($_SESSION['session_id'])) {
+        header('Location: ../home/main.php');
+        exit;
+    }
 
-if (isset($_POST['login'])) {
-    $email = $_POST['email'] ?? '';
-    $password = $_POST['password'] ?? '';
+    if (isset($_POST['login'])) {
+        $email = $_POST['email'] ?? '';
+        $password = $_POST['password'] ?? '';
         $query = "
             SELECT *
             FROM users
             WHERE email = :email
         ";
-        
+            
         $check = $pdo->prepare($query);
         $check->bindParam(':email', $email, PDO::PARAM_STR);
         $check->execute();
@@ -37,3 +37,4 @@ if (isset($_POST['login'])) {
             echo $msg;
         }
     }
+?>

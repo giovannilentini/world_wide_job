@@ -1,7 +1,7 @@
 <?php
-session_start();
-
+    session_start();
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,10 +12,8 @@ session_start();
 
     <link rel="icon" href="../images/nuovologopiccolo.png" type="image/icon type">
 
-    <!-- ===== CSS ===== -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- ===== Boxicons ===== -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <link
@@ -86,18 +84,6 @@ session_start();
                     <span class="text vav-text">Logout</span>
                 </a>
             </li>
-
-            <li class="mode">
-                <div class="moon-sun">
-                    <i class="bx bx-moon icon moon"></i>
-                    <i class="bx bx-sun icon sun"></i>
-                </div>
-                <span class="mode-text text">Dark Mode</span>
-
-                <div class="toggle-switch">
-                    <span class="switch"></span>
-                </div>
-            </li>
         </div>
 
     </div>
@@ -152,7 +138,7 @@ session_start();
                         echo "</li>";
                     }
             } else {
-                echo "Nessun utente trovato nel database.";
+                echo "No users found in the database.";
             }
             ?>
 

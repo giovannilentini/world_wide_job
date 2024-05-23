@@ -28,10 +28,8 @@
 
     <link rel="icon" href="../images/nuovologopiccolo.png" type="image/icon type">
 
-    <!-- ===== CSS ===== -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- ===== Boxicons ===== -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 
@@ -98,18 +96,6 @@
                     <span class="text vav-text">Logout</span>
                 </a>
             </li>
-
-            <li class="mode">
-                <div class="moon-sun">
-                    <i class="bx bx-moon icon moon"></i>
-                    <i class="bx bx-sun icon sun"></i>
-                </div>
-                <span class="mode-text text">Dark Mode</span>
-
-                <div class="toggle-switch">
-                    <span class="switch"></span>
-                </div>
-            </li>
         </div>
 
     </div>
@@ -137,18 +123,18 @@
                 
                 <form name="" action="methods/upload_personal.php" method="POST">
                     <div class="info-box">
-                        <label for="nome">Nome</label>
-                        <input class="input-text" type="text" id="nome" name="nome" placeholder="inserire qui il tuo nome...">
+                        <label for="nome">Name</label>
+                        <input class="input-text" type="text" id="nome" name="nome" placeholder="enter your name here...">
                     </div>
                     
                     <div class="info-box">
-                        <label for="cognome">Cognome:</label>
-                        <input class="input-text" type="text" id="cognome" name="cognome" placeholder="inserire qui il tuo cognome...">
+                        <label for="cognome">Surname:</label>
+                        <input class="input-text" type="text" id="cognome" name="cognome" placeholder="enter your last name here...">
                     </div>
 
                     <div class="info-box">
-                            <label for="bio">Biografia:</label>
-                            <textarea id="bio" name="bio" rows="4" placeholder="inserire qui la tua bio..."></textarea>
+                            <label for="bio">Biography:</label>
+                            <textarea id="bio" name="bio" rows="4" placeholder="enter your bio here..."></textarea>
                             <button type="submit" class="sub">Submit</button>
                     </div>
                 </form>
@@ -160,22 +146,22 @@
                 <form name="" action="methods/upload_profile.php" method="POST">
                     <div class="info-box">
                         <label for="email">E-mail:</label>
-                        <input type="text" id="email" name="email" placeholder="inserire qui la tua mail...">
+                        <input type="text" id="email" name="email" placeholder="insert your email here...">
                     </div>
 
                     <div class="info-box">
-                        <label for="oldpassword">Vecchia Password:</label>
-                        <input type="password" id="oldpassword" name="oldpassword" placeholder="inserire qui la vecchia password...">
+                        <label for="oldpassword">Old Password:</label>
+                        <input type="password" id="oldpassword" name="oldpassword" placeholder="enter the old password here...">
                     </div>
 
                     <div class="info-box">
-                        <label for="newpassword">Nuova Password:</label>
-                        <input type="password" id="newpassword" name="newpassword" placeholder="inserire qui la nuova password...">
+                        <label for="newpassword">New Password:</label>
+                        <input type="password" id="newpassword" name="newpassword" placeholder="enter the new password here...">
                     </div>
 
                     <div class="info-box">
-                        <label for="confpassword">Conferma Password:</label>
-                        <input type="password" id="confpassword" name="confpassword" placeholder="inserire qui la nuova password...">
+                        <label for="confpassword">Confirm Password:</label>
+                        <input type="password" id="confpassword" name="confpassword" placeholder="enter the new password here...">
                         <button type="submit" class="sub">Submit</button>
                     </div>
                 </form>
@@ -184,62 +170,6 @@
         </div>
     </div>
 </section>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const profilePic = document.getElementById('profile-image');
-    profilePic.addEventListener('click', function() {
-        const fileInput = document.createElement('input');
-        fileInput.type = 'file';
-        fileInput.accept = 'image/*'; 
-        fileInput.addEventListener('change', function(event) {
-            const file = event.target.files[0]; 
-            const reader = new FileReader();
-            
-            reader.onload = function() {
-                profilePic.src = reader.result;
-            }
-            
-            if (file && file.type.startsWith('image/')) {
-                reader.readAsDataURL(file); 
-                uploadImage(file);
-            } else {
-                document.getElementById("uploadResult").style.color = "red";
-                document.getElementById("uploadResult").innerHTML="Estensione non consentita, scegliere un file JPEG o PNG.";
-            }
-        });
-        fileInput.click();
-    });
-});
-
-function uploadImage(imageFile) {
-    document.getElementById("uploadResult").style.color = "green";
-    var formData = new FormData();
-    formData.append("profileImage", imageFile);
-    
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "methods/upload_image.php", true);
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            if(xhr.responseText!="Immagine caricata con successo.")
-            {
-                document.getElementById("uploadResult").style.color = "red";
-            }
-            document.getElementById("uploadResult").innerHTML=xhr.responseText;
-        
-        } else {
-            document.getElementById("uploadResult").style.color = "red";
-            document.getElementById("uploadResult").innerHTML="Errore durante l'upload dell'immagine.";
-            
-        }
-    };
-    xhr.send(formData);
-}
-
-function getFileExtension(filename) {
-    return filename.split('.').pop().toLowerCase();
-}
-</script>
 
 <script src="script.js"></script>
 

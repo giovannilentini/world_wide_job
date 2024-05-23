@@ -8,10 +8,10 @@
 }
 
 :root{
-    --body-color: #E4E9F7;
+    --body-color: #dde9ff;
     --sidebar-color: #FFF;
-    --primary-color: #695CFE;
-    --primary-color-light: #F6F5FF;
+    --primary-color: #008df8;
+    --primary-color-light: #f5faff;
     --toggle-color: #DDD;
     --text-color: #454545;
     --box-color: rgb(240, 232, 232);
@@ -315,9 +315,9 @@ body .dark .switch::before{
 
 .edit-box {
     position: absolute;
-    bottom: 4px;
-    left: -10%;
-    transform: translateX(-50%);
+    bottom: -25px;
+    left: 33%;
+    transform: translateX(0%);
     background-color: var(--box-color);
     border: 1.5px solid #4a4a4a;
     padding: 5px 10px;
@@ -353,8 +353,7 @@ body .dark .switch::before{
         left: 0;
         width: 100%;
     }
-
-    .home{
+        .home{
         position: absolute;
         left: 0;
         width: 100%;
@@ -470,19 +469,20 @@ body .dark .switch::before{
     }
 
     .icon-mobile {
-        color: var(--primary-color);
+        background-color: var(--primary-color);
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 39px;
-        height: 39px;
+        width: 42px;
+        height: 42px;
         border: 3px solid var(--primary-color);
-        border-radius: 50%;
-        background-color: transparent;
+        color: white;
+        border-radius: 10px;
         position: fixed;
         margin: 15px;
         font-size: 32px;
         transition: var(--tran-03); 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         z-index: 999;
     }
     .exitbutton{
@@ -496,12 +496,60 @@ body .dark .switch::before{
         font-size: 30px;
     }
     .pic {
-        width: 15vh;
-        height: 15vh;
+        width: 25vh;
+        height: 25vh;
     }
 
     .uploadResult.errorResponse
     {
         color:red;
+    }
+
+    .info-box input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid var(--toggle-color);
+        background-color: var(--sidebar-color);
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+        transition: border-color 0.3s;
+    }
+
+    .info-box textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid var(--toggle-color);
+        background-color: var(--sidebar-color);
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+        transition: border-color 0.3s;
+    }
+
+    .title {
+        display: flex;
+        margin-top: 15px;
+        border-bottom: 1px solid var(--text-color); 
+        z-index: 2;
+        justify-content: center;
+     }
+
+     .edit-box {
+        position: absolute;
+        bottom: 4px;
+        left: 33%;
+        transform: translate(0%);
+        background-color: var(--box-color);
+        border: 1.5px solid #4a4a4a;
+        padding: 5px 10px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        opacity: 1;
+        transition: none;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
 }

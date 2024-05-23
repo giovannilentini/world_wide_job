@@ -82,8 +82,16 @@ var editBtns = document.querySelectorAll(".edit-btn");
 editBtns.forEach(function(btn) {
     btn.onclick = function(event) {
         event.preventDefault();
-        var postId = this.parentNode.querySelector('input[name="post_id"]').value;
+        
+        var form = this.closest('form');
+        var postTitle = form.querySelector('input[name="post_title"]').value;
+        var postCampo = form.querySelector('input[name="post_campo"]').value;
+        var postId = form.querySelector('input[name="post_id"]').value;
+
+        document.getElementById("editTitle").value = postTitle;
+        document.getElementById("editContent").value = postCampo;
         document.getElementById("editPostId").value = postId;
+
         editModal.style.display = "block";
     }
 });

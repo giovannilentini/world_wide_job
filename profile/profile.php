@@ -139,6 +139,8 @@
                                 echo '<div class="post-actions">';
                                     echo '<form id="formEdit' . $row['id'] . '" name="formEdit" action="edit.php" method="POST">';
                                     echo '<input type="hidden" name="post_id" value="' . $row['id'] . '">';
+                                    echo '<input type="hidden" name="post_title" value="' . htmlspecialchars($row['title']) . '">';
+                                    echo '<input type="hidden" name="post_campo" value="' . htmlspecialchars($row['campo']) . '">';
                                     echo '<button type="submit" class="edit-btn"><i class="bx bx-edit"></i>Edit</button>';
                                     echo '</form>';
                                     echo '<form id="formDelete' . $row['id'] . '" name="formDelete" action="delete.php" method="POST">';
@@ -165,7 +167,7 @@
                 <button id="btnYes">Yes</button>
                 <button id="btnNo">No</button>
             </div>
-        </div>
+        </div>e
     </div>
 
     <div id="editModal" class="edit-modal">

@@ -3,8 +3,8 @@ const body = document.querySelector("body"),
       searchBtn = document.querySelector(".search-box"),
       modeSwitch = document.querySelector(".toggle-switch"),
       modeText = document.querySelector(".mode-text"),
-      mobile_toggle = document.querySelector(".mobile-toggle");
-      exit_button= document.querySelector(".exitbutton");
+      mobile_toggle = document.querySelector(".mobile-toggle"),
+      exit_button = document.querySelector(".exitbutton");
 
 const hideSidebar = () => {
     sidebar.classList.add("close");
@@ -20,20 +20,10 @@ mobile_toggle.addEventListener("click", (e) => {
 });
 
 exit_button.addEventListener("click", (e) => {
-        sidebar.classList.add("close");
+    sidebar.classList.add("close");
 });
 sidebar.addEventListener("mouseleave", hideSidebar);
 sidebar.addEventListener("mouseenter", showSidebar);
-
-modeSwitch.addEventListener("click", (e) => {
-    body.classList.toggle("dark");
-
-    if(body.classList.contains("dark")) {
-        modeText.innerText = "Light Mode";
-    } else {
-        modeText.innerText = "Dark Mode";
-    }
-});
 
 function checkAge(tempdate) {
     var today = tempdate;
@@ -46,40 +36,45 @@ function checkAge(tempdate) {
     return age;
 }
 
+/* ===== finestra modale Delete ===== */
 var modal = document.getElementById("myModal");
 
 var btnsOpenModal = document.querySelectorAll(".delete-btn");
 var btnCloseModal = document.getElementById("btnNo");
 
 btnsOpenModal.forEach(function(btn) {
-btn.onclick = function(event) {
-    event.preventDefault();
-    modal.style.display = "block";
-    var postId = this.parentNode.querySelector('input[name="post_id"]').value;
-    document.getElementById("btnYes").setAttribute("data-post-id", postId);
-}
+    btn.onclick = function(event) {
+        event.preventDefault();
+        modal.style.display = "block";
+        var postId = this.parentNode.querySelector('input[name="post_id"]').value;
+        document.getElementById("btnYes").setAttribute("data-post-id", postId);
+    }
 });
 
 btnCloseModal.onclick = function() {
-modal.style.display = "none";
+    modal.style.display = "none";
 }
 
 var btnYes = document.getElementById("btnYes");
 btnYes.onclick = function() {
-var postId = this.getAttribute("data-post-id");
+    var postId = this.getAttribute("data-post-id");
 
-var xhr = new XMLHttpRequest();
-xhr.open("POST", "delete.php", true);
-xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-    location.reload();
-    }
-};
-xhr.send("post_id=" + postId);
-modal.style.display = "none";
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "delete.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            location.reload();
+        }
+    };
+    xhr.send("post_id=" + postId);
+    modal.style.display = "none";
 }
+/* ===== Fine finestra modale Delete ===== */
 
+
+
+/* ===== Finestra modale Edit ===== */
 var editModal = document.getElementById("editModal");
 var editModalClose = document.getElementById("editModalClose");
 
@@ -93,6 +88,34 @@ editBtns.forEach(function(btn) {
     }
 });
 
-editModalClose.onclick = function() {
+editModalClose.onclick = function(event) {
+    event.preventDefault();
+    document.getElementById("editTitle").value = '';
+    document.getElementById("editContent").value = '';
     editModal.style.display = "none";
 }
+
+var saveBtn = document.getElementById("savePost");
+saveBtn.onclick = function(event) {
+    event.preventDefault();
+    var postId = document.getElementById("editPostId").value;
+    var editTitle = document.getElementById("editTitle").value;
+    var editContent = document.getElementById("editContent").value;
+
+    if (editTitle.trim() === '' || editContent.trim() === '') {
+        alert("All fields are required");
+        return;
+    }
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "edit.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            location.reload();
+        }
+    };
+    xhr.send("post_id=" + postId + "&editTitle=" + encodeURIComponent(editTitle) + "&editContent=" + encodeURIComponent(editContent));
+    editModal.style.display = "none";
+}
+/* ===== Fine finestra modale Edit ===== */

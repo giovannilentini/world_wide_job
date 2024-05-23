@@ -9,6 +9,7 @@ const body = document.querySelector("body"),
 const hideSidebar = () => {
     sidebar.classList.add("close");
 }
+
 const showSidebar = () => {
     sidebar.classList.remove("close");
 }
@@ -22,15 +23,16 @@ mobile_toggle.addEventListener("click", (e) => {
 exit_button.addEventListener("click", (e) => {
         sidebar.classList.add("close");
 });
+
 sidebar.addEventListener("mouseleave", hideSidebar);
 sidebar.addEventListener("mouseenter", showSidebar);
 
-    modeSwitch.addEventListener("click", (e) => {
-        body.classList.toggle("dark");
+modeSwitch.addEventListener("click", (e) => {
+    body.classList.toggle("dark");
 
-        if(body.classList.contains("dark")) {
-            modeText.innerText = "Light Mode";
-        } else {
-            modeText.innerText = "Dark Mode";
-        }
-    });
+    if(body.classList.contains("dark")) {
+        modeText.innerText = "Light Mode";
+    } else {
+        modeText.innerText = "Dark Mode";
+    }
+});

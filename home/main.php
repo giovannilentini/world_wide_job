@@ -1,7 +1,24 @@
 <?php
-session_start();
+    session_start();
+
+    $profile_image_folder = '../profileimages/';
+    $session_id = $_SESSION['session_id'];
+    $allowed_extensions = ['png', 'jpg', 'jpeg'];
+    $profile_image_src = '../images/default-profile-image.png';
+    foreach ($allowed_extensions as $extension) {
+        $profile_image_path = $profile_image_folder . $session_id . '.' . $extension;
+        if (file_exists($profile_image_path)) {
+            $profile_image_src = $profile_image_path;
+            break;
+        }
+    }
+
+    if (empty($profile_image_src)) {
+        $profile_image_src = '../images/default-profile-image.png';
+    }
 
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -81,25 +98,95 @@ session_start();
                     <span class="text vav-text">Logout</span>
                 </a>
             </li>
-
-            <li class="mode">
-                <div class="moon-sun">
-                    <i class="bx bx-moon icon moon"></i>
-                    <i class="bx bx-sun icon sun"></i>
-                </div>
-                <span class="mode-text text">Dark Mode</span>
-
-                <div class="toggle-switch">
-                    <span class="switch"></span>
-                </div>
-            </li>
+            
+            <div class="toggle-switch"></div>
         </div>
 
     </div>
 </nav>
 
 <section class="home">
-    <div class="text">MAIN</div>
+    <div class="container">
+        <div class="homepage">
+            <button id="openModalBtn" class="fb-btn">
+            <img class="fb-profile-img" src="<?php echo $profile_image_src?>" alt="Profilo">
+            <span>Do you want to create a new post?</span>
+            </button>
+            <div id="myModal" class="modal">
+                    <div class="modal-content">
+                    <form name="" action="methods/newpost.php" method="POST">
+                        <span class="close-win">&times;</span>
+                        <h2>Create a Post</h2>
+                        <input type="text" name="postTitle" placeholder="Post title" required>
+                        <textarea class="textwin" name="postContent" rows="16" placeholder="Write something down..."required></textarea>
+                        <button id="postBtn">Post</button>
+                    </form>
+                    </div>
+            </div>
+
+            <div class="posts">
+                <?php
+                    require_once('../database/database.php');
+                    
+                    $query = "SELECT posts.id, users.id as user_id, users.name, users.surname, posts.title, posts.campo 
+                            FROM posts 
+                            INNER JOIN users ON posts.user_id = users.id
+                            ORDER BY RAND();";
+                    $statement = $pdo->query($query);
+
+                    if ($statement->rowCount() > 0) {
+                        while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                            echo '<div class="post">';
+                                echo '<div class="post-header">';
+                                    echo '<div class="author-info">';
+
+                                        $profile_pic_extensions = ['.jpg', '.jpeg', '.png'];
+                                        $profile_pic = false;
+                                        foreach ($profile_pic_extensions as $ext) {
+                                            $filename = $row['user_id'] . $ext;
+                                            if (file_exists("../profileimages/" . $filename)) {
+                                                $profile_pic = $filename;
+                                                break;
+                                            }
+                                        }
+
+                                        $profile_image = $profile_pic ? "../profileimages/$profile_pic" : "../images/default-profile-image.png";
+
+                                        
+                                        echo '<div class="profile-info">';
+                                            echo '<div class="profile-img">';
+                                                echo '<img src="' . htmlspecialchars($profile_image) . '" alt="' . htmlspecialchars($row['name'] . ' ' . $row['surname']) . '">';
+                                            echo '</div>'; 
+                                            echo '<div class="profile-details">';
+                                                echo '<span class="username">';
+                                                echo '<form id="visita' . $row['id'] . '" name="form" action="methods/user_profile.php" method="POST">';
+                                                echo '<input type="hidden" name="other_user_id" value="' . $row['user_id'] . '">';
+                                                echo '<button type="submit" class="user-profile">' . htmlspecialchars($row['name'] . ' ' . $row['surname']) . '</button>';
+                                                echo '</form>';
+                                                echo '</span>';
+                                            echo '</div>'; 
+                                        echo '</div>';
+
+                                    echo '</div>';
+                                echo '</div>'; 
+
+                                echo '<div class="post-content">';
+                                echo '<h3>' . htmlspecialchars($row['title']) . '</h3>';
+                                    echo '<div class="comment-box">';
+                                    echo '<p>' . htmlspecialchars($row['campo']) . '</p>';
+                                    echo '</div>'; 
+                                echo '</div>';
+
+                            echo '</div>';
+                        }
+                    }
+                    $pdo = null;
+                ?>
+            </div>
+
+
+        </div>
+  </div>
 </section>
 
 <script src="script.js"></script>

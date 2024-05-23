@@ -8,12 +8,12 @@
 }
 
 :root{
-    --body-color: #E4E9F7;
+    --body-color: #dde9ff;
     --sidebar-color: #FFF;
-    --primary-color: #695CFE;
-    --primary-color-light: #F6F5FF;
-    --toggle-color: #DDD;
+    --primary-color: #008df8;
+    --primary-color-light: #f5faff;
     --text-color: #454545;
+    --post-color: #eee;
 
     --tran-02: all 0.2s;
     --tran-03: all 0.3s;
@@ -27,17 +27,7 @@ body{
     transition: var(--tran-04);
 }
 
-body.dark{
-    --body-color: #18191A;
-    --sidebar-color: #242526;
-    --primary-color: #3A3B3C;
-    --primary-color-light: #3A3B3C;
-    --toggle-color: #FFF;
-    --text-color: #CCC;
-}
-
-/* ~~~~~~~~~~ Sidebar ~~~~~~~~~~ */
-.sidebar{
+.sidebar {
     position: fixed;
     top: 0;
     left: 0;
@@ -50,22 +40,20 @@ body.dark{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.sidebar.close{
+.sidebar.close {
     width: 88px;
 }
 
-
-/* ~~~~~~~~~~ Reusable CSS ~~~~~~~~~~ */
 .sidebar .text {
     font-size: 16px;
     font-weight: 500;
     color: var(--text-color);
-    transition: var(--tran-03);
+    transition: var(--tran-02);
     white-space: nowrap;
     opacity: 1;
 }
 
-.sidebar.close .text{
+.sidebar.close .text {
     opacity: 0;
 }
 
@@ -76,7 +64,7 @@ body.dark{
     justify-content: center;
 }
 
-.sidebar li{
+.sidebar li {
     height: 50px;
     margin-top: 10px;
     list-style: none;
@@ -84,7 +72,7 @@ body.dark{
     align-items: center;
 }
 
-.sidebar li .icon{
+.sidebar li .icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -93,51 +81,49 @@ body.dark{
 }
 
 .sidebar li .icon,
-.sidebar li .text{
+.sidebar li .text {
     color: var(--text-color);
     transition: var(--tran-02);
 }
 
-.sidebar header{
+.sidebar header {
     position: relative;
 }
 
-.sidebar .image-txt img{
+.sidebar .image-txt img {
     width: 40px;
     border-radius: 6px;
 }
 
-.sidebar header .image-text{
+.sidebar header .image-text {
     display: flex;
     align-items: center;
 }
 
-header .image-text .header-text{
+header .image-text .header-text {
     display: flex;
     flex-direction: column;
-    transition: var(--tran-05);
 }
 
-.header-text .name{
+.header-text .name {
     font-weight: 600;
 }
 
-.header-text .profession{
+.header-text .profession {
     margin-top: -2px;
 }
 
-
-.sidebar .menu{
+.sidebar .menu {
     margin-top: 35px;
 }
 
-.sidebar .search-box{
+.sidebar .search-box {
     background: var(--primary-color-light);
     border-radius: 6px;
     transition: var(--tran-05);
 }
 
-.search-box input{
+.search-box input {
     height: 100%;
     width: 100%;
     outline: none;
@@ -149,7 +135,7 @@ header .image-text .header-text{
     transition: var(--tran-05);
 }
 
-.sidebar li a{
+.sidebar li a {
     height: 100%;
     width: 100%;
     display: flex;
@@ -158,81 +144,24 @@ header .image-text .header-text{
     transition: var(--tran-04);
 }
 
-.sidebar li a:hover{
+.sidebar li a:hover {
     border: 6px;
     background: var(--primary-color);
 }
 
 .sidebar li a:hover .icon,
-.sidebar li a:hover .text{
+.sidebar li a:hover .text {
     color: var(--sidebar-color);
 }
 
-body.dark li a:hover .icon,
-body.dark li a:hover .text{
-    color: var(--text-color);
-}
-
-.sidebar .menu-bar{
+.sidebar .menu-bar {
     height: calc(100% - 50px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.menu-bar .mode{
-    position: relative;
-    border-radius: 6px;
-    background: var(--primary-color-light);
-}
-
-.menu-bar .mode .moon-sun{
-    height: 50px;
-    width: 60px;
-    display: flex;
-    align-items: center;
-}
-
-.menu-bar .mode i{
-    position: absolute;
-    transition: var(--tran-03);
-}
-
-.menu-bar .mode i.sun{
-    opacity: 0;
-}
-
-body.dark .menu-bar .mode i.sun{
-    opacity: 1;
-}
-
-body.dark .menu-bar .mode i.moon{
-    opacity: 0;
-}
-
-.menu-bar .mode .toggle-switch{
-    position: absolute;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    min-width: 60px;
-    cursor: pointer;
-    border-radius: 6px;
-    background: var(--primary-color-light);
-    transition: var(--tran-05);
-}
-
-.toggle-switch .switch{
-    position: relative;
-    height: 22px;
-    width: 44px;
-    border-radius: 25px;
-    background: var(--toggle-color);
-}
-
-.switch::before{
+.switch::before {
     content: '';
     position: absolute;
     height: 15px;
@@ -245,8 +174,13 @@ body.dark .menu-bar .mode i.moon{
     transition: var(--tran-03);
 }
 
-body.dark .switch::before{
-    left: 24px;
+.sidebar.close ~ .home {
+    left: 88px;
+    width: calc(100% - 88px);
+}
+
+.sidebar.close .exitbutton {
+    display: none;
 }
 
 .home{
@@ -258,14 +192,15 @@ body.dark .switch::before{
     transition: var(--tran-05);
 }
 
-.home .container {
+.container {
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: flex-start;
     padding: 20px;
 }
 
-.home .profile {
+.profile {
     flex: 1;
     max-width: 300px;
     margin-right: 20px;
@@ -276,7 +211,7 @@ body.dark .switch::before{
     text-align: center;
 }
 
-.home .profile img {
+.profile img {
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -298,32 +233,187 @@ body.dark .switch::before{
 .home .profile h2 {
     margin-top: 0;
 }
+  
+.post {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 850px;
+}
 
-.home .post {
-    background-color: var(--post-color);
+.post-header {
     padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.home .post h3 {
+
+.post-actions {
+    display: flex;
+    align-items: center;
+}
+
+.home .post-content {
+    padding: 15px;
+}
+
+.home .post-content h3 {
     margin-top: 0;
-    margin-bottom: 10px;
-}
-.home .post p {
-    margin: 0;
 }
 
-.sidebar.close ~ .home{
-    left: 88px;
-    width: calc(100% - 88px);
+
+.home .delete-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-.sidebar.close .exitbutton{
+.home .delete-btn:hover {
+    background-color: darkred;
+}
+
+.edit-btn {
+    background-color: #695CFE;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.edit-btn:hover {
+    background-color: #4D3EB6;
+}
+
+.delete-modal {
     display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+  
+.delete-modal .modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+  
+.delete-modal button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 10px;
 }
 
-@media only screen and (min-width: 501px)
-{
+.delete-modal button#btnNo {
+    background-color: #f44336;
+}
+
+.delete-modal p {
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+
+.edit-modal {
+    overflow: hidden;
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    align-items: center;
+    text-align: center;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    overflow: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 8%;
+}
+
+.edit-modal .textwin {
+    width: calc(100% - 40px);
+    height: 40vh;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none;
+    box-sizing: border-box;
+}
+
+.edit-modal input[type="text"] {
+    width: calc(100% - 40px);
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none;
+    box-sizing: border-box;
+}
+  
+.edit-modal button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 10px;
+    margin: 0 5px;
+}
+
+.edit-modal button#editModalClose {
+    background-color: #f44336;
+    margin-left: 5px;
+}
+
+.edit-modal p {
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+@media only screen and (min-width: 501px) {
     .icon-mobile{
         display: none;
         visibility: hidden;
@@ -333,11 +423,9 @@ body.dark .switch::before{
         display: none;
     }
 }
-/*
-----------Mobile------------
- */
- @media only screen and (max-width: 500px) {
-    .sidebar{
+
+@media only screen and (max-width: 500px) {
+    .sidebar {
         width: 270px;
         opacity: 1;
         visibility: visible;
@@ -345,36 +433,37 @@ body.dark .switch::before{
         overflow: scroll;
     }
 
-    .sidebar.close{
+    .sidebar.close {
         width: 0px;
         opacity: 0;
         visibility: hidden;
     }
 
     .sidebar.close .icon,
-    .sidebar.close .image-text
-    {
+    .sidebar.close .image-text{
         opacity: 0;
         visibility: hidden;
     }
 
     .icon-mobile {
-        color: var(--primary-color);
+        background-color: var(--primary-color);
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 39px;
-        height: 39px;
+        width: 42px;
+        height: 42px;
         border: 3px solid var(--primary-color);
-        border-radius: 50%;
-        background-color: transparent;
+        color: white;
+        border-radius: 10px;
         position: fixed;
         margin: 15px;
         font-size: 32px;
         transition: var(--tran-03); 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         z-index: 999;
     }
-    .exitbutton{
+
+    .exitbutton {
         color: var(--text-color);
         transition: var(--tran-03); 
         width: 30px;
@@ -384,4 +473,40 @@ body.dark .switch::before{
         background-color: transparent;
         font-size: 30px;
     }
+
+    .sidebar.close ~ .home {
+        left: 0;
+        width: 100%;
+    }
+
+    .home {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        transform: translateX(0);
+    }
+
+    .modal-content {
+        width: 80%;
+        margin-top: 25%;
+    }
+}
+
+@media screen and (max-width: 830px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        display: grid;
+        gap: 20px;
+    }
+
+    .profile {
+        max-width: 100%;
+        margin-right: 0px;
+    }
+
+    .posts {
+        max-width: 100%;
+    }
+
 }

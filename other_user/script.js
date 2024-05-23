@@ -35,34 +35,13 @@ sidebar.addEventListener("mouseenter", showSidebar);
         }
     });
 
-
-/* ===== Modal Window ===== */
-var modal = document.getElementById("myModal");
-var btn = document.getElementById("openModalBtn");
-var span = document.getElementsByClassName("close")[0];
-
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
-document.getElementById("postBtn").addEventListener("click", function() {
-  var postContent = document.getElementById("postContent").value;
-  console.log("Hai postato: " + postContent);
-  modal.style.display = "none";
-});
-
-/* ===== Close Button =====*/
-var closeModalBtn = document.querySelector(".close-win");
-closeModalBtn.addEventListener("click", function() {
-  modal.style.display = "none";
-});
+    function checkAge(tempdate) {
+        var today = tempdate;
+        var birthdate = new Date(document.reg.birthdate.value);
+        var age = today.getFullYear() - birthdate.getFullYear();
+        var m = today.getMonth() - birthdate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthdate.getDate())) {
+            age--;
+        }
+        return age;
+    }

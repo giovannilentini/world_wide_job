@@ -1,8 +1,10 @@
 <?php
     session_start();
 
+    require_once('../database/database.php');
+
     $profile_image_folder = '../profileimages/';
-    $session_id = $_SESSION['session_id'];
+    $session_id = $_SESSION['session_visit'];
     $allowed_extensions = ['png', 'jpg', 'jpeg'];
     $profile_image_src = '';
     foreach ($allowed_extensions as $extension) {
@@ -15,6 +17,29 @@
 
     if (empty($profile_image_src)) {
         $profile_image_src = '../images/default-profile-image.png';
+    }
+
+    $query = "  SELECT *
+                FROM users 
+                WHERE id = :id";
+    $check = $pdo->prepare($query);            
+    $check->bindParam(':id', $_SESSION['session_visit'], PDO::PARAM_INT);
+    $check->execute();
+
+    $user_id = '';
+    $name = '';
+    $surname = '';
+    $bd = '';
+    $email = '';
+    $bio = '';
+
+    while ($row = $check->fetch(PDO::FETCH_ASSOC)) {
+        $name = $row['name'];
+        $surname = $row['surname'];
+        $bd = $row['birthdate'];
+        $email = $row['email'];
+        $bio = $row['bio'];
+        break;
     }
 
     function checkAge($birthdate) {
@@ -35,10 +60,9 @@
 
     <link rel="icon" href="../images/nuovologopiccolo.png" type="image/icon type">
 
-    <!-- ===== CSS ===== -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- ===== Boxicons ===== -->
+
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <title>Personal Profile</title>
@@ -104,8 +128,6 @@
                     <span class="text vav-text">Logout</span>
                 </a>
             </li>
-            
-            <div class="toggle-switch"></div>
         </div>
 
     </div>
@@ -114,17 +136,20 @@
 <section class="home">
     <div class="container">
         <div class="profile">
-            <img src="<?php echo $profile_image_src?>" alt="Immagine Profilo" id="profile-image">
+            <img src="<?php echo $profile_image_src ?>" alt="Immagine Profilo" id="profile-image">
             <h2>Profile Data</h2>
-            <p>Biography: <?php echo $_SESSION['session_bio'] ?></p>
-            <p>Name: <?php echo $_SESSION['session_name'] . ' ' . $_SESSION['session_surname'] ?></p>
-            <p>Email: <?php echo $_SESSION['session_email'] ?></p>
-            <p>Age: <?php echo checkAge($_SESSION['session_birthdate']) ?></script></p>
+            <p>Biography: <?php echo $bio ?></p>
+            <p>Name: <?php echo $name . ' ' . $surname ?></p>
+            <p>Email: <?php echo $email ?></p>
+            <p>Age: <?php echo checkAge($bd) ?></script></p>
 
-        </div> <!-- Chiusura div "profile" -->
+            <button class="contact-btn">
+                <i class='bx bx-chat bx-sm'></i> <span> Contact Me <span>
+            </button>
+        </div> 
         
         <div class="posts">
-            <h2>My Posts</h2>
+            <h2>All posts of <?php echo $name . ' ' . $surname ?></h2>
             <?php
                 require_once('../database/database.php');
                                                 
@@ -133,25 +158,15 @@
                         WHERE user_id = :id";
                 $check = $pdo->prepare($query);
                             
-                $check->bindParam(':id', $_SESSION["session_id"], PDO::PARAM_INT);
+                $check->bindParam(':id', $_SESSION["session_visit"], PDO::PARAM_INT);
                 $check->execute();
 
                 if ($check->rowCount() > 0) {
                     while ($row = $check->fetch(PDO::FETCH_ASSOC)) {
                         echo '<div class="post">';
                             echo '<div class="post-header">';
-                            echo '<h3>' . htmlspecialchars($row['title']) . '</h3>';
-                                echo '<div class="post-actions">';
-                                    echo '<form id="formEdit' . $row['id'] . '" name="formEdit" action="" method="POST">';
-                                    echo '<input type="hidden" name="post_id" value="' . $row['id'] . '">';
-                                    echo '<button type="submit" class="edit-btn"><i class="bx bx-edit"></i>Edit</button>';
-                                    echo '</form>';
-                                    echo '<form id="formDelete' . $row['id'] . '" name="formDelete" action="delete.php" method="POST">';
-                                    echo '<input type="hidden" name="post_id" value="' . $row['id'] . '">';
-                                    echo '<button type="submit" class="delete-btn"><i class="bx bx-trash"></i>Delete</button>';
-                                    echo '</form>';
-                                echo '</div>'; 
-                            echo '</div>';         
+                                echo '<h3>' . htmlspecialchars($row['title']) . '</h3>';
+                            echo '</div>';              
                             echo '<div class="post-content">';
                                 echo '<p>' . htmlspecialchars($row['campo']) . '</p>';
                             echo '</div>';
@@ -160,32 +175,8 @@
                 }
                 $pdo = null;
             ?>
-        </div>
+        </div> 
     </div> 
-
-    <div id="myModal" class="modal delete-modal">
-        <div class="modal-content">
-            <p>Do you want to delete the post?</p>
-            <div>
-                <button id="btnYes">Yes</button>
-                <button id="btnNo">No</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="editModal" class="edit-modal">
-        <div class="modal-content">
-            <h2>Edit Post</h2>
-            <form id="editForm" action="" method="POST">
-                <input type="text" id="editTitle" name="editTitle" placeholder="Enter title..." required>
-                <textarea class="textwin" id="editContent" name="editContent" rows="4" placeholder="Insert text..." required></textarea>
-                <input type="hidden" id="editPostId" name="post_id">
-            </form> 
-            <button type="submit">Save</button>
-            <button id="editModalClose">Cancel</button>
-        </div>
-    </div>
-
 
     
 </section>

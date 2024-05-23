@@ -58,10 +58,14 @@
 
     <div class="menu-bar">
         <div class="menu">
+
+        <div class="search-container">
             <li class="search-box">
                 <i class='bx bx-search-alt-2 icon' ></i>
-                <input type="search" placeholder="Search...">
+                <input type="search" id="search-input" placeholder="Search...">
             </li>
+        </div>
+        
             <li class="nav-link">
                 <a href="../home/main.php">
                     <i class="bx bx-home icon"></i>
@@ -123,65 +127,8 @@
                     </form>
                     </div>
             </div>
+            <div class="posts" id="posts-container">
 
-            <div class="posts">
-                <?php
-                    require_once('../database/database.php');
-                    
-                    $query = "SELECT posts.id, users.id as user_id, users.name, users.surname, posts.title, posts.campo 
-                            FROM posts 
-                            INNER JOIN users ON posts.user_id = users.id
-                            ORDER BY RAND();";
-                    $statement = $pdo->query($query);
-
-                    if ($statement->rowCount() > 0) {
-                        while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                            echo '<div class="post">';
-                                echo '<div class="post-header">';
-                                    echo '<div class="author-info">';
-
-                                        $profile_pic_extensions = ['.jpg', '.jpeg', '.png'];
-                                        $profile_pic = false;
-                                        foreach ($profile_pic_extensions as $ext) {
-                                            $filename = $row['user_id'] . $ext;
-                                            if (file_exists("../profileimages/" . $filename)) {
-                                                $profile_pic = $filename;
-                                                break;
-                                            }
-                                        }
-
-                                        $profile_image = $profile_pic ? "../profileimages/$profile_pic" : "../images/default-profile-image.png";
-
-                                        
-                                        echo '<div class="profile-info">';
-                                            echo '<div class="profile-img">';
-                                                echo '<img src="' . htmlspecialchars($profile_image) . '" alt="' . htmlspecialchars($row['name'] . ' ' . $row['surname']) . '">';
-                                            echo '</div>'; 
-                                            echo '<div class="profile-details">';
-                                                echo '<span class="username">';
-                                                echo '<form id="visita' . $row['id'] . '" name="form" action="methods/user_profile.php" method="POST">';
-                                                echo '<input type="hidden" name="other_user_id" value="' . $row['user_id'] . '">';
-                                                echo '<button type="submit" class="user-profile">' . htmlspecialchars($row['name'] . ' ' . $row['surname']) . '</button>';
-                                                echo '</form>';
-                                                echo '</span>';
-                                            echo '</div>'; 
-                                        echo '</div>';
-
-                                    echo '</div>';
-                                echo '</div>'; 
-
-                                echo '<div class="post-content">';
-                                echo '<h3>' . htmlspecialchars($row['title']) . '</h3>';
-                                    echo '<div class="comment-box">';
-                                    echo '<p>' . htmlspecialchars($row['campo']) . '</p>';
-                                    echo '</div>'; 
-                                echo '</div>';
-
-                            echo '</div>';
-                        }
-                    }
-                    $pdo = null;
-                ?>
             </div>
 
 

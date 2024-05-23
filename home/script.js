@@ -66,3 +66,65 @@ var closeModalBtn = document.querySelector(".close-win");
 closeModalBtn.addEventListener("click", function() {
   modal.style.display = "none";
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  function loadPosts(query) {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', `./methods/search_posts.php?query=${encodeURIComponent(query)}`, true);
+      xhr.onload = function() {
+          if (xhr.status === 200) {
+              const data = JSON.parse(xhr.responseText);
+              console.log('Data received:', data); 
+              const postsContainer = document.getElementById('posts-container');
+              postsContainer.innerHTML = '';
+
+              if (data.length === 0) {
+                  postsContainer.innerHTML = '<p>No posts found.</p>';
+                  return;
+              }
+
+              data.forEach(post => {
+                  const postElement = document.createElement('div');
+                  postElement.classList.add('post');
+
+                  postElement.innerHTML = `
+                      <div class="post-header">
+                          <div class="author-info">
+                              <div class="profile-info">
+                                  <div class="profile-img">
+                                      <img src="${post.profile_image}" alt="${post.name} ${post.surname}">
+                                  </div>
+                                  <div class="profile-details">
+                                      <span class="username">
+                                          <form id="visita${post.id}" name="form" action="methods/user_profile.php" method="POST">
+                                              <input type="hidden" name="other_user_id" value="${post.user_id}">
+                                              <button type="submit" class="user-profile">${post.name} ${post.surname}</button>
+                                          </form>
+                                      </span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="post-content">
+                          <h3>${post.title}</h3>
+                          <div class="comment-box">
+                              <p>${post.campo}</p>
+                          </div>
+                      </div>
+                  `;
+                  postsContainer.appendChild(postElement);
+              });
+          } 
+      };
+      xhr.send();
+  }
+
+  loadPosts('');
+
+  document.getElementById('search-input').addEventListener('input', function() {
+      const query = this.value;
+      console.log('Query:', query);
+      loadPosts(query);
+  });
+});
+

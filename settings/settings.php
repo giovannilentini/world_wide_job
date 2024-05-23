@@ -56,10 +56,7 @@
 
     <div class="menu-bar">
         <div class="menu">
-            <li class="search-box">
-                <i class='bx bx-search-alt-2 icon' ></i>
-                <input type="search" placeholder="Search...">
-            </li>
+
             <li class="nav-link">
                 <a href="../home/main.php">
                     <i class="bx bx-home icon"></i>

@@ -116,8 +116,12 @@
             <p>Name: <?php echo $_SESSION['session_name'] . ' ' . $_SESSION['session_surname'] ?></p>
             <p>Email: <?php echo $_SESSION['session_email'] ?></p>
             <p>Age: <?php echo checkAge($_SESSION['session_birthdate']) ?></script></p>
+<<<<<<< HEAD
 
         </div> <!-- Chiusura div "profile" -->
+=======
+        </div>
+>>>>>>> giovanni
         
         <div class="posts">
             <h2>My Posts</h2>
@@ -138,7 +142,7 @@
                             echo '<div class="post-header">';
                             echo '<h3>' . htmlspecialchars($row['title']) . '</h3>';
                                 echo '<div class="post-actions">';
-                                    echo '<form id="formEdit' . $row['id'] . '" name="formEdit" action="" method="POST">';
+                                    echo '<form id="formEdit' . $row['id'] . '" name="formEdit" action="edit.php" method="POST">';
                                     echo '<input type="hidden" name="post_id" value="' . $row['id'] . '">';
                                     echo '<button type="submit" class="edit-btn"><i class="bx bx-edit"></i>Edit</button>';
                                     echo '</form>';
@@ -172,13 +176,19 @@
     <div id="editModal" class="edit-modal">
         <div class="modal-content">
             <h2>Edit Post</h2>
+<<<<<<< HEAD
             <form id="editForm" action="" method="POST">
                 <input type="text" id="editTitle" name="editTitle" placeholder="Enter title..." required>
                 <textarea class="textwin" id="editContent" name="editContent" rows="4" placeholder="Insert text..." required></textarea>
+=======
+            <form id="editForm" action="edit.php" method="POST">
+                <input type="text" id="editTitle" name="editTitle" placeholder="Enter title...">
+                <textarea class="textwin" id="editContent" name="editContent" rows="4" placeholder="Insert text..."></textarea>
+>>>>>>> giovanni
                 <input type="hidden" id="editPostId" name="post_id">
+                <button class="submit" id="savePost">Save</button>
+                <button id="editModalClose">Cancel</button>
             </form> 
-            <button type="submit">Save</button>
-            <button id="editModalClose">Cancel</button>
         </div>
     </div>
 

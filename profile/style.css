@@ -117,7 +117,28 @@ header .image-text .header-text {
     margin-top: 35px;
 }
 
+<<<<<<< HEAD
 
+=======
+.sidebar .search-box {
+    background: var(--primary-color-light);
+    border-radius: 6px;
+    transition: var(--tran-05);
+}
+
+.search-box input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    background: var(--primary-color-light);
+    transition: var(--tran-05);
+}
+
+>>>>>>> giovanni
 .sidebar li a {
     height: 100%;
     width: 100%;
@@ -185,7 +206,7 @@ header .image-text .header-text {
 
 .profile {
     flex: 1;
-    max-width: 300px;
+    max-width: 100%;
     margin-right: 20px;
     background-color: var(--sidebar-color);
     padding: 20px;
@@ -203,7 +224,7 @@ header .image-text .header-text {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.home .posts {
+.posts {
     flex: 2;
     background-color: var(--sidebar-color);
     padding: 20px;
@@ -211,9 +232,10 @@ header .image-text .header-text {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     display: grid;
     gap: 16px;
+    max-width: 100%;
 }
 
-.home .profile h2 {
+.profile h2 {
     margin-top: 0;
 }
   
@@ -475,21 +497,38 @@ header .image-text .header-text {
     }
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: 830px) {
     .container {
         flex-direction: column;
         align-items: center;
         display: grid;
+=======
+@media screen and (max-width: 1000px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: normal;
+>>>>>>> giovanni
         gap: 20px;
     }
 
     .profile {
+<<<<<<< HEAD
         max-width: 100%;
+=======
+        width: 100%;
+>>>>>>> giovanni
         margin-right: 0px;
     }
 
     .posts {
+<<<<<<< HEAD
         max-width: 100%;
     }
 
+=======
+        width: 100%;
+    }
+>>>>>>> giovanni
 }

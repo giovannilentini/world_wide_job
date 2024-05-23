@@ -24,18 +24,4 @@ exit_button.addEventListener("click", (e) => {
 });
 
 sidebar.addEventListener("mouseleave", hideSidebar);
-<<<<<<< HEAD
 sidebar.addEventListener("mouseenter", showSidebar);
-=======
-sidebar.addEventListener("mouseenter", showSidebar);
-
-modeSwitch.addEventListener("click", (e) => {
-    body.classList.toggle("dark");
-
-    if(body.classList.contains("dark")) {
-        modeText.innerText = "Light Mode";
-    } else {
-        modeText.innerText = "Dark Mode";
-    }
-});
->>>>>>> giovanni

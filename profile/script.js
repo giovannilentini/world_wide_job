@@ -1,5 +1,6 @@
 const body = document.querySelector("body"),
       sidebar = document.querySelector(".sidebar"),
+      searchBtn = document.querySelector(".search-box"),
       modeSwitch = document.querySelector(".toggle-switch"),
       modeText = document.querySelector(".mode-text"),
       mobile_toggle = document.querySelector(".mobile-toggle"),
@@ -35,28 +36,13 @@ function checkAge(tempdate) {
     return age;
 }
 
-<<<<<<< HEAD
-=======
 /* ===== finestra modale Delete ===== */
->>>>>>> giovanni
 var modal = document.getElementById("myModal");
 
 var btnsOpenModal = document.querySelectorAll(".delete-btn");
 var btnCloseModal = document.getElementById("btnNo");
 
 btnsOpenModal.forEach(function(btn) {
-<<<<<<< HEAD
-btn.onclick = function(event) {
-    event.preventDefault();
-    modal.style.display = "block";
-    var postId = this.parentNode.querySelector('input[name="post_id"]').value;
-    document.getElementById("btnYes").setAttribute("data-post-id", postId);
-}
-});
-
-btnCloseModal.onclick = function() {
-modal.style.display = "none";
-=======
     btn.onclick = function(event) {
         event.preventDefault();
         modal.style.display = "block";
@@ -67,27 +53,10 @@ modal.style.display = "none";
 
 btnCloseModal.onclick = function() {
     modal.style.display = "none";
->>>>>>> giovanni
 }
 
 var btnYes = document.getElementById("btnYes");
 btnYes.onclick = function() {
-<<<<<<< HEAD
-var postId = this.getAttribute("data-post-id");
-
-var xhr = new XMLHttpRequest();
-xhr.open("POST", "delete.php", true);
-xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-    location.reload();
-    }
-};
-xhr.send("post_id=" + postId);
-modal.style.display = "none";
-}
-
-=======
     var postId = this.getAttribute("data-post-id");
 
     var xhr = new XMLHttpRequest();
@@ -106,7 +75,6 @@ modal.style.display = "none";
 
 
 /* ===== Finestra modale Edit ===== */
->>>>>>> giovanni
 var editModal = document.getElementById("editModal");
 var editModalClose = document.getElementById("editModalClose");
 
@@ -120,11 +88,6 @@ editBtns.forEach(function(btn) {
     }
 });
 
-<<<<<<< HEAD
-editModalClose.onclick = function() {
-    editModal.style.display = "none";
-}
-=======
 editModalClose.onclick = function(event) {
     event.preventDefault();
     document.getElementById("editTitle").value = '';
@@ -156,4 +119,3 @@ saveBtn.onclick = function(event) {
     editModal.style.display = "none";
 }
 /* ===== Fine finestra modale Edit ===== */
->>>>>>> giovanni

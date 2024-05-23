@@ -64,6 +64,10 @@
 
     <div class="menu-bar">
         <div class="menu">
+            <li class="search-box">
+                <i class='bx bx-search-alt-2 icon' ></i>
+                <input type="search" placeholder="Search...">
+            </li>
             <li class="nav-link">
                 <a href="../home/main.php">
                     <i class="bx bx-home icon"></i>
@@ -171,15 +175,9 @@
     <div id="editModal" class="edit-modal">
         <div class="modal-content">
             <h2>Edit Post</h2>
-<<<<<<< HEAD
-            <form id="editForm" action="" method="POST">
-                <input type="text" id="editTitle" name="editTitle" placeholder="Enter title..." required>
-                <textarea class="textwin" id="editContent" name="editContent" rows="4" placeholder="Insert text..." required></textarea>
-=======
             <form id="editForm" action="edit.php" method="POST">
                 <input type="text" id="editTitle" name="editTitle" placeholder="Enter title...">
                 <textarea class="textwin" id="editContent" name="editContent" rows="4" placeholder="Insert text..."></textarea>
->>>>>>> giovanni
                 <input type="hidden" id="editPostId" name="post_id">
                 <button class="submit" id="savePost">Save</button>
                 <button id="editModalClose">Cancel</button>

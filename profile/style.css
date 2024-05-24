@@ -296,7 +296,7 @@ header .image-text .header-text {
 .delete-modal .modal-content {
     background-color: #fefefe;
     margin: 10% auto;
-    margin-top: 35%;
+    margin-top: 20%;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
@@ -467,6 +467,10 @@ header .image-text .header-text {
         position: flex;
         left: 0;
         width: 100%;
+    }
+
+    .delete-modal .modal-content {
+        margin-top: 350px;
     }
 
     .modal-content {

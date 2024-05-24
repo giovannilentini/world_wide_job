@@ -466,20 +466,6 @@ header .image-text .header-text{
      }
 
      .edit-box {
-        position: absolute;
-        bottom: 4px;
-        left: 33%;
-        transform: translate(0%);
-        background-color: var(--box-color);
-        border: 1.5px solid #4a4a4a;
-        padding: 5px 10px;
-        border-radius: 5px;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        cursor: pointer;
-        opacity: 1;
-        transition: none;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        display: none;
     }
 }

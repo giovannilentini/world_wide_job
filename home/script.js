@@ -74,7 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
       xhr.onload = function() {
           if (xhr.status === 200) {
               const data = JSON.parse(xhr.responseText);
-              console.log('Data received:', data); 
               const postsContainer = document.getElementById('posts-container');
               postsContainer.innerHTML = '';
 
@@ -123,7 +122,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.getElementById('search-input').addEventListener('input', function() {
       const query = this.value;
-      console.log('Query:', query);
       loadPosts(query);
   });
 });
